@@ -1,4 +1,4 @@
-@extends('layouts.Home.gy')
+@extends('layout.homes')
 
 @section('content')
 	<form action="/home/order/create" method="post" >
@@ -221,8 +221,8 @@
 @section('js')
 
 
-	<script class="resources library" src="/Home/js/area.js" type="text/javascript"></script>
-    <script type="text/javascript">_init_area();</script>
+	<!-- <script class="resources library" src="/Home/js/area.js" type="text/javascript"></script>
+    <script type="text/javascript">_init_area();</script> -->
 	<script type="text/javascript">
 		$('body').removeClass('common-home res layout-1')
 			

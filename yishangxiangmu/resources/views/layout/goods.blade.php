@@ -257,7 +257,7 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <p class="text-right"> <a class="btn view-cart" href="cart.html"><i class="fa fa-shopping-cart"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查看购物车</font></font></a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="checkout.html"><i class="fa fa-share"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查看</font></font></a> 
+                                            <p class="text-right"> <a class="btn view-cart" href="/home/cart/index"><i class="fa fa-shopping-cart"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查看购物车</font></font></a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="checkout.html"><i class="fa fa-share"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查看</font></font></a> 
                                             </p>
                                         </div>
                                     </li>

@@ -1,4 +1,4 @@
-@extends('layouts.Home.gy')
+@extends('layout.homes')
 
 @section('content')
 		<!-- Main Container  -->

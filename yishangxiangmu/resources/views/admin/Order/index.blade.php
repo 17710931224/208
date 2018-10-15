@@ -1,4 +1,4 @@
-@extends('layouts.Admin.gy')
+@extends('layouts.admins)
 @section('title',$title)
 
 @section('content')
