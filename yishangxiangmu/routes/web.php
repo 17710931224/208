@@ -47,3 +47,6 @@ Route::group([],function(){
 
 
 });
+
+
+	Route::any();
