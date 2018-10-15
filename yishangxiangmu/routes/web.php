@@ -49,4 +49,22 @@ Route::group([],function(){
 });
 
 
-	Route::any();
+	
+//后台订单
+Route::resource('admin/orders','Admin\OdersController');
+Route::any('admin/details/{id}','Admin\OrderDetailsController@show');
+Route::any('admin/order/slip','Admin\OrderDetailsController@slip');
+
+//前台购物车
+// Route::resource('home/cart','Home\CartController');
+Route::any('home/cart/index','Home\ShopCartController@index');
+Route::any('home/cart/update','Home\ShopCartController@update');
+Route::any('home/cart/delete','Home\ShopCartController@delete');
+
+//前台订单管理
+Route::any('home/order/checkout','Home\OrderController@checkout');
+Route::any('home/tran','Home\OrderController@sport');
+Route::any('home/order/create','Home\OrderController@save');
+Route::any('home/order/history','Home\OrderController@history');
+Route::any('home/order/details/{id}','Home\OrderController@details');
+Route::any('/home/order/receipt','Home\OrderController@receipt');	
