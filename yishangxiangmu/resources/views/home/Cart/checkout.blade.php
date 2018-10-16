@@ -152,8 +152,8 @@
 									<tbody>
 									@foreach($res as $rs)	
 									  <tr>
-										<td class="text-center"><a href="product.html"><img width="60px" src="image/catalog/demo/product/fashion/10.jpg" alt="Xitefun Causal Wear花式鞋" title="Xitefun Causal Wear花式鞋" class="img-thumbnail"></a></td>
-										<td class="text-left"><a href="product.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$rs->prod_name}}</font></font></a></td>
+										<td class="text-center"><a href="/home/product/{{$rs->pid}}"><img width="60px" src="image/catalog/demo/product/fashion/10.jpg" alt="{{$rs->prod_name}}" title="{{$rs->prod_name}}" class="img-thumbnail"></a></td>
+										<td class="text-left"><a href="/home/product/{{$rs->pid}}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$rs->prod_name}}</font></font></a></td>
 										<td class="text-left" style="text-align: center;">{{$rs->quantity}}</td>
 										<td class="text-right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¥ {{$rs->price}}</font></font></td>
 										<td class="text-right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¥ {{$rs->sum}}</font></font></td>
