@@ -27,7 +27,7 @@
                 <tbody>
 @foreach($res as $rs)
 <tr class="trr">
-  <td class="text-center"><a href="product.html"><img alt="Aspire超极本笔记本电脑" class="img-thumbnail" src="/home/image/catalog/demo/product/fashion/8.jpg" title="Aspire超极本笔记本电脑" width="70px"/></a></td>
+  <td class="text-center"><a href="product.html"><img alt="Aspire超极本笔记本电脑" class="img-thumbnail" src="{{$rs->pic}}" title="Aspire超极本笔记本电脑" width="70px"/></a></td>
   <td class="text-left">
     <a href="product.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$rs->prod_name}}</font></font></a>
     <br/>

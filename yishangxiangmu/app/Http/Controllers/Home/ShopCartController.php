@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Home\Cart;
+use DB;
 
 class ShopCartController extends Controller
 {
@@ -20,6 +21,35 @@ class ShopCartController extends Controller
         
         return view('Home.Cart.index',['title'=>'易商购物车','res'=>$res]);
     }
+
+    public function create(Request $request)
+    {
+        // const REQ = $request->id;
+        $goods = DB::table('es_products')->where('prod_id',$request->id)->get();
+        $pic = DB::table('prod_pic')->where('cid',$request->id)->get();
+        $cart = Cart::where('uid',2)->where('pid',$request->id)->get();
+
+        if($cart == "[]"){
+        
+            $res = Cart::insert([
+                "uid"=>2,
+                "pid"=>$goods[0]->prod_id,
+                "pic"=>$pic[0]->pic,
+                "prod_name"=>$goods[0]->prod_name,
+                "quantity"=>$request->quantity,
+                "price"=>$goods[0]->price
+            ]);
+            if ($res){
+                echo 1;
+            }else{
+                echo 2;
+            }
+        }else{
+            return 1;
+        }
+    }
+
+
 
     //购物车 商品数量修改
     public function update(Request $request)

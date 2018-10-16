@@ -57,6 +57,7 @@ Route::any('admin/order/slip','Admin\OrderDetailsController@slip');
 
 //前台购物车
 // Route::resource('home/cart','Home\CartController');
+Route::any('home/cart/create','Home\ShopCartController@create');
 Route::any('home/cart/index','Home\ShopCartController@index');
 Route::any('home/cart/update','Home\ShopCartController@update');
 Route::any('home/cart/delete','Home\ShopCartController@delete');

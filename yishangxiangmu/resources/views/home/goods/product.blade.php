@@ -247,7 +247,7 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <p class="text-right"> <a class="btn view-cart" href="cart.html"><i class="fa fa-shopping-cart"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查看购物车</font></font></a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="checkout.html"><i class="fa fa-share"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查看</font></font></a> 
+                                            <p class="text-right"> <a class="btn view-cart" href="/home/cart/index"><i class="fa fa-shopping-cart"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查看购物车</font></font></a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="checkout.html"><i class="fa fa-share"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查看</font></font></a> 
                                             </p>
                                         </div>
                                     </li>
@@ -861,7 +861,7 @@
                                 <div class="form-group box-info-product">
                                     <div class="option quantity">
                                         <div class="input-group quantity-control" unselectable="on" style="-webkit-user-select: none;">
-                                            <label>Qty</label>
+                                            <label>数量</label>
                                             <input class="form-control" type="text" name="quantity"
                                             value="1">
                                             <input type="hidden" name="product_id" value="50">
@@ -870,7 +870,8 @@
                                         </div>
                                     </div>
                                     <div class="cart">
-                                        <input type="button" id="aaa" data-toggle="tooltip" title="" value="加入购物车" data-loading-text="Loading..." id="button-cart" class="btn btn-mega btn-lg" onclick="cart.add('42', '1');" data-original-title="加入购物车">
+                                        <input type="text" name="" class="pid" value="{{$goodsinfos->prod_id}}" style="display: none">
+                                        <input type="button" id="aaa" data-toggle="tooltip" title="" value="加入购物车" data-loading-text="Loading..." id="button-cart" class="btn btn-mega btn-lg" data-original-title="加入购物车">
                                     </div>
                                     <div class="add-to-links wish_comp">
                                         <ul class="blank list-inline">
@@ -1037,7 +1038,7 @@
                                     </div>
                                         <!--quickview--> 
                                         <div class="so-quickview">
-                                          <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>快速浏览</span></a>
+                                          <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="/home/quickview/{{$v->prod_id}}" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>快速浏览</span></a>
                                         </div>                                                     
                                         <!--end quickview-->
 
@@ -1045,7 +1046,8 @@
                                     </div>
                                     <div class="right-block">
                                         <div class="button-group so-quickview cartinfo--left">
-                                            <button type="button" class="addToCart" title="加入购物车" onclick="cart.add('60 ');">
+                                            <input type="text" name="pid" value="{{$v->prod_id}}" style="display: none">
+                                            <button type="button" class="addToCart" title="加入购物车">
                                                 <span>加入购物车 </span>   
                                             </button>
                                             <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart-o"></i><span>收藏</span>
@@ -1357,7 +1359,28 @@
     
 </body>
 @section('js')
+    <script type="text/javascript">
+        $('#aaa').click(function(){
+            var pid = $('.pid').val()
+            var quantity = $('input[name=quantity]').val()
+            // console.log(pid,quantity)
+            $.get('/home/cart/create',{id:pid,quantity:quantity},function(data){
+                if(data == '1'){
+                    alert('已加入购物车');
+                }
+            })
 
+        })
+
+        $('.addToCart').click(function(){
+            var pid = $(this).prev().val()
+            $.get('/home/cart/create',{id:pid,quantity:1},function(data){
+                if(data == '1'){
+                   alert('已加入购物车'); 
+                }
+            })
+        })
+    </script>
 
 @show    
 </html>

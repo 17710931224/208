@@ -452,7 +452,7 @@
                                                                                     <li><a href="login.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录页面</font></font></a></li>
                                                                                     <li><a href="register.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注册页面</font></font></a></li>
                                                                                     <li><a href="my-account.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我的帐户</font></font></a></li>
-                                                                                    <li><a href="order-history.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">订单历史</font></font></a></li>
+                                                                                    <li><a href="/home/order/history"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">订单历史</font></font></a></li>
                                                                                     <li><a href="order-information.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">订单信息</font></font></a></li>
                                                                                     <li><a href="return.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">产品退货</font></font></a></li>
                                                                                     <li><a href="gift-voucher.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">礼品券</font></font></a></li>
