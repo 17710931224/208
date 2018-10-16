@@ -17,6 +17,10 @@ class GoodsController extends Controller
    {
       
 
+      
+
+
+
       return view('layout.goods',['title'=>'商品页']);
    }
 

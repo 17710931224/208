@@ -47,18 +47,21 @@
                                         
                                         
                                     <div class="owl2-stage-outer"><div class="owl2-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 506px;"><div class="owl2-item active" style="width: 253px; margin-right: 0px;"><div class="item ">
+                                           @foreach($goodsinfos as $k=>$v)
                                             <div class="product-layout item-inner style1 ">
                                                 <div class="item-image">
                                                     <div class="item-img-info">
-                                                        <a href="product.html" target="_self" title="曼杜尔短 ">
-                                                            <img src="/homes/image/catalog/demo/product/80/1.jpg" alt="曼杜尔短">
+                                                        <a href="/home/product/{{$v->prod_id}}" target="_self" title="{{$v->prod_name}} ">
+                                                            <img src="@php $gpic = \DB::table('prod_pic')->where('cid',$v->prod_id)->first();
+                                                                                echo $gpic->pic;
+                                                                        @endphp" alt="曼杜尔短">
                                                             </a>
                                                     </div>
                                                     
                                                 </div>
                                                 <div class="item-info">
-                                                    <div class="item-title">
-                                                        <a href="product.html" target="_self" title="曼杜尔短"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">曼杜尔短 </font></font></a>
+                                                    <div class="item-title" >
+                                                        <a  href="/home/product/{{$v->prod_id}}" target="_self" title="曼杜尔短"><font style="vertical-align: inherit;"><font style="vertical-align: inherit; ">{{$v->prod_name}} </font></font></a>
                                                     </div>
                                                     <div class="rating">
                                                         <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
@@ -68,7 +71,7 @@
                                                         <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
                                                     </div>
                                                     <div class="content_price price">
-                                                        <span class="price-new product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ 55.00 </font></font></span>&nbsp;&nbsp;
+                                                        <span class="price-new product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¥{{$v->price}}</font></font></span>&nbsp;&nbsp;
 
                                                         <span class="price-old"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ 76.00</font></font></span>&nbsp;
 
@@ -77,119 +80,8 @@
                                                 <!-- End item-info -->
                                                 <!-- End item-wrap-inner -->
                                             </div>
-                                            <!-- End item-wrap -->
-                                            <div class="product-layout item-inner style1 ">
-                                                <div class="item-image">
-                                                    <div class="item-img-info">
-                                                        <a href="product.html" target="_self" title="Xancetta bresao ">
-                                                                <img src="/homes/image/catalog/demo/product/80/2.jpg" alt="Xancetta bresao">
-                                                                </a>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <div class="item-info">
-                                                    <div class="item-title">
-                                                        <a href="product.html" target="_self" title="Xancetta bresao"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                                                    Xancetta bresao 
-                                                                </font></font></a>
-                                                    </div>
-                                                    <div class="rating">
-                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    </div>
-                                                    <div class="content_price price">
-                                                        <span class="price-new product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ 80.00 </font></font></span>&nbsp;&nbsp;
-
-                                                        <span class="price-old"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ 89.00</font></font></span>&nbsp;
-
-
-
-                                                    </div>
-                                                </div>
-                                                <!-- End item-info -->
-                                                <!-- End item-wrap-inner -->
-                                            </div>
-                                            <!-- End item-wrap -->
-                                            <div class="product-layout item-inner style1 ">
-                                                <div class="item-image">
-                                                    <div class="item-img-info">
-                                                        <a href="product.html" target="_self" title="香肠牛 ">
-                                                                    <img src="/homes/image/catalog/demo/product/80/3.jpg" alt="香肠牛">
-                                                                    </a>
-                                                    </div>
-                                                   
-                                                </div>
-                                                <div class="item-info">
-                                                    <div class="item-title">
-                                                        <a href="product.html" target="_self" title="香肠牛"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                                                    香肠牛 
-                                                                </font></font></a>
-                                                    </div>
-                                                    <div class="rating">
-                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                    </div>
-                                                   
-                                                    <div class="content_price price">
-                                                        <span class="price product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                                                        $ 66.00 
-                                                                    </font></font></span>
-                                                    </div>
-                                                </div>
-                                                <!-- End item-info -->
-                                                <!-- End item-wrap-inner -->
-                                            </div>
-                                            <!-- End item-wrap -->
-                                            <div class="product-layout item-inner style1 ">
-                                                <div class="item-image">
-                                                    <div class="item-img-info">
-                                                        <a href="#" target="_self" title="鸡swinesha ">
-                                                                        <img src="/homes/image/catalog/demo/product/80/4.jpg" alt="鸡swinesha">
-                                                                        </a>
-                                                    </div>
-                                                   
-                                                </div>
-                                                <div class="item-info">
-                                                    <div class="item-title">
-                                                        <a href="#" target="_self" title="鸡swinesha"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                                                    鸡swinesha 
-                                                                </font></font></a>
-                                                    </div>
-                                                    <div class="rating">
-                                                        <span class="fa fa-stack">
-                                                                            <i class="fa fa-star fa-stack-2x"></i>
-                                                                        </span>
-                                                        <span class="fa fa-stack">
-                                                                            <i class="fa fa-star fa-stack-2x"></i>
-                                                                        </span>
-                                                        <span class="fa fa-stack">
-                                                                            <i class="fa fa-star fa-stack-2x"></i>
-                                                                        </span>
-                                                        <span class="fa fa-stack">
-                                                                            <i class="fa fa-star fa-stack-2x"></i>
-                                                                        </span>
-                                                        <span class="fa fa-stack">
-                                                                            <i class="fa fa-star fa-stack-2x"></i>
-                                                                        </span>
-                                                    </div>
-                                                    <div class="content_price price">
-                                                        <span class="price-new product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ 45.00 </font></font></span>&nbsp;&nbsp;
-
-                                                        <span class="price-old"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ 56.00</font></font></span>&nbsp;
-
-
-
-                                                    </div>
-                                                </div>
-                                                <!-- End item-info -->
-                                                <!-- End item-wrap-inner -->
-                                            </div>
+                                           @endforeach
+                                            
                                             <!-- End item-wrap -->
                                         </div></div><div class="owl2-item" style="width: 253px; margin-right: 0px;"><div class="item ">
                                             <div class="product-layout item-inner style1 ">
@@ -369,7 +261,7 @@
                                                 <!-- End item-wrap-inner -->
                                             </div>
                                             <!-- End item-wrap -->
-                                        </div></div></div></div><div class="owl2-controls"><div class="owl2-nav"><div class="owl2-prev" style="display: none;"></div><div class="owl2-next" style="display: none;"></div></div><div class="owl2-dots" style=""><div class="owl2-dot active"><span></span></div><div class="owl2-dot"><span></span></div></div></div></div>
+                                        </div></div></div></div></div>
                                     <!--End extraslider-inner -->
                                 </div>
                             </div>
