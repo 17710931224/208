@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">颜色</font></font></label>
+                  <label for="inputEmail3" class="col-sm-2 control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">颜色分类</font></font></label>
 
                   <div class="col-sm-8">
                     <input type="text" class="form-control" id="inputEmail3" name="color" placeholder="蓝色,红色,绿色" >

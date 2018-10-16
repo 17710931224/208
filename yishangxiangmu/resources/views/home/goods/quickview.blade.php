@@ -130,7 +130,7 @@
                                 <h4>可用选项</h4>
                                 
                                 <div class="image_option_type form-group required">
-                                    <label class="control-label">Colors</label>
+                                    <label class="control-label">颜色分类</label>
                                     <ul class="product-options clearfix"id="input-option231">
                                     @php
                                         $goodscolor = explode(",",$goodsinfos->color);
