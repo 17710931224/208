@@ -305,7 +305,7 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/home/orders"> - 管理</a></li>
+            <li><a href="/admin/orders"> - 管理</a></li>
           </ul>
        </li>
 	   <li>

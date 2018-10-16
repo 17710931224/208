@@ -35,7 +35,7 @@ class OdersController extends Controller
     ->paginate($request->input('onum', 3));
         // dump($request);
         // $res =  Orders::get();
-        return view('Admin/.Order.index',['title'=>'订单添加','res'=>$res,'request'=>$request] );
+        return view('admin.Order.index',['title'=>'订单添加','res'=>$res,'request'=>$request] );
     }
 
     /**
