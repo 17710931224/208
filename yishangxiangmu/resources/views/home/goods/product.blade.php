@@ -52,6 +52,52 @@
          body{font-family:'Poppins', sans-serif;}
     </style>
 
+    <style>
+                                                a {
+                                                    color: #f1c40f;
+                                                }
+
+                                                a:hover,
+                                                a:active,
+                                                a:focus {
+                                                    color: #dab10d;
+                                                }
+
+                                                .rating-stars{
+                                                    width: 150px;
+                                                }
+
+                                                .rating-stars {
+                                                    width: 100%;
+                                                    text-align: left;
+                                                }
+                                                .rating-star-first{
+                                                   margin-left: -8px; 
+                                                }
+                                                
+
+                                                .rating-stars .rating-stars-container {
+                                                    font-size: 0px;
+                                                    width: 150px;
+                                                }
+                                               
+                                                .rating-stars .rating-stars-container .rating-star {
+                                                    display: inline-block;
+                                                    font-size: 16px;
+                                                    color: #555555;
+                                                    cursor: pointer;
+                                                    padding: 6px 6px;
+                                                }
+
+                                                .rating-stars .rating-stars-container .rating-star.is--active,
+                                                .rating-stars .rating-stars-container .rating-star.is--hover {
+                                                    color: #f1c40f;
+                                                }
+
+                                                .rating-stars .rating-stars-container .rating-star.is--no-hover {
+                                                    color: #555555;
+                                                }
+                                            </style>
 </head>
 
 <body class="res layout-subpage layout-1 banners-effect-5">
@@ -949,60 +995,12 @@
                                     <h2 id="review-title">写评论</h2>
                                     <div class="contacts-form">
                                         <div class="form-group"> <span class="icon icon-bubbles-2"></span>
-                                            <textarea class="form-control" name="content"></textarea>
+                                            <textarea class="form-control" name="content" id="pinglun"></textarea>
                                         </div> 
                                         <!-- <span style="font-size: 11px;"><span class="text-danger">Note:</span>                       HTML is not translated!</span> -->
                                         <h2>图片</h2>
                                         <input type="file" name="pic[]" multiple><br>
                                         <div class="form-group">
-                                            <style>
-                                                a {
-                                                    color: #f1c40f;
-                                                }
-
-                                                a:hover,
-                                                a:active,
-                                                a:focus {
-                                                    color: #dab10d;
-                                                }
-
-                                                .rating-stars{
-                                                    width: 150px;
-                                                }
-
-                                                .rating-stars {
-                                                    width: 100%;
-                                                    text-align: left;
-                                                }
-                                                .rating-star-first{
-                                                   margin-left: -8px; 
-                                                }
-                                                
-
-                                                .rating-stars .rating-stars-container {
-                                                    font-size: 0px;
-                                                    width: 150px;
-                                                }
-                                               
-                                                .rating-stars .rating-stars-container .rating-star {
-                                                    display: inline-block;
-                                                    font-size: 16px;
-                                                    color: #555555;
-                                                    cursor: pointer;
-                                                    padding: 6px 6px;
-                                                }
-
-                                                .rating-stars .rating-stars-container .rating-star.is--active,
-                                                .rating-stars .rating-stars-container .rating-star.is--hover {
-                                                    color: #f1c40f;
-                                                }
-
-                                                .rating-stars .rating-stars-container .rating-star.is--no-hover {
-                                                    color: #555555;
-                                                }
-                                            </style>
-                                          
-
                                         <h3>商品等级</h3>
                                         <div class="rating-stars block" id="another-rating" style="width: 15%">
                                             <input type="number" readonly class="form-control rating-value" name="star" id="another-rating-stars-value"
@@ -1495,22 +1493,6 @@
             })
         })
 
-        //星级评价
-       // $('input[name=star]').each(function(){
-       //  $(this).css({'-webkit-appearance':'none','background':'#f90','width':'13px','height':'13px'}).attr('checked',true)
-       //  var ra = $(this)
-       //  $(this).click(function(){
-       //      var xingji = $(this).val()
-       //      $('input[name=star]').each(function(){
-       //          if($(this).val()>xingji){
-       //              $(this).css('-webkit-appearance','').attr('checked',false)
-       //          }else{
-       //              $(this).css({'-webkit-appearance':'none','background':'#f90','width':'13px','height':'13px'}).attr('checked',true) 
-       //          }
-       //      })
-       //  })
-       // })
-
        //星级评价
         var ratingOptions = {
             selectors: {
@@ -1525,6 +1507,17 @@
 
         $(".rating-stars").ratingStars(ratingOptions);
 
+        //提交验证
+        $('form').submit(function(){
+            var ss = $('#pinglun').val()
+             var reg = /^([\u4e00-\u9fa5]|[0-9]|[,]|[，]|[。]|[.]|["]|[“]|[”]|[']|[‘]|[’]|[;]|[；]|[：]|[;]|[?]|[？]|[:]|[、]|[!]|[！]){0,200}$/
+            // console.log(ss)
+            if(!reg.test(ss)){
+                alert('不能输入特殊符号');
+            }
+
+            return false
+        })
     </script>
 
 @show    
