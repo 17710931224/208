@@ -717,7 +717,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="item-title">
-                                                <a href="#" target="_self" title="{{$v->prod_name}}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->prod_name}} </font></font></a>
+                                                <a href="/home/product/{{$v->prod_id}}" target="_self" title="{{$v->prod_name}}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->prod_name}} </font></font></a>
                                             </div>
                                             <div class="rating">
                                                 <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>

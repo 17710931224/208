@@ -57,7 +57,8 @@
     <style type="text/css">
          body{font-family:'Poppins', sans-serif;}
 
-         .item-title{display:block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+         .item-title  {display:block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+         .item-inner   {display:block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
     </style>
 
 </head>
@@ -268,8 +269,7 @@
                         <!--//cart-->
 
                         <ul class="wishlist-comp hidden-md hidden-sm hidden-xs">
-                            <li class="compare hidden-xs"><a href="#" class="top-link-compare" title="比较 "><i class="fa fa-refresh"></i></a>
-                            </li>
+                           
                             <li class="wishlist hidden-xs"><a href="#" id="wishlist-total" class="top-link-wishlist" title="愿望清单（0） "><i class="fa fa-heart"></i></a>
                             </li>
                         </ul>
