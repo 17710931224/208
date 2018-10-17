@@ -38,6 +38,7 @@
     <link href="/homes/css/themecss/so-listing-tabs.css" rel="stylesheet">
     <link href="/homes/css/themecss/so-category-slider.css" rel="stylesheet">
     <link href="/homes/css/themecss/so-newletter-popup.css" rel="stylesheet">
+    <!-- <link href="/homes/css/font-awesome/css/font-awesome.min.css" rel="stylesheet"> -->
 
     <link href="/homes/css/footer/footer1.css" rel="stylesheet">
     <link href="/homes/css/header/header1.css" rel="stylesheet">
@@ -789,8 +790,8 @@
                                     </div>
                                 </div>
 
-                                <a class="reviews_button" href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">0 评论</a>  | 
-                                <a class="write_review_button" href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">写评论</a>
+                                <a class="reviews_button" href="" onclick="$('a[href=\'#tab-reviews\']').trigger('click'); return false;">0 评论</a>  | 
+                                <a class="write_review_button" href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); $('#tab-review').css('display','block'); return false;">写评论</a>
                             </div>
 
                             <div class="product-label form-group">
@@ -905,7 +906,8 @@
                     <div class="tabsslider  vertical-tabs col-xs-12">
                         <ul class="nav nav-tabs col-lg-2 col-sm-3">
                             <li class="active"><a data-toggle="tab" href="#tab-1">商品描述</a></li>
-                            <li class="item_nonactive"><a data-toggle="tab" href="#tab-review">Reviews (1)</a></li>
+                            <li class="item_nonactive"><a data-toggle="tab" href="#tab-reviews" onclick="$('#tab-review').css('display','none')">商品评论 (1)</a></li>
+                            <li class="item_nonactive"><a data-toggle="tab" href="#tab-review" style="display: none">书写评论 (1)</a></li>
                             <li class="item_nonactive"><a data-toggle="tab" href="#tab-4">Tags</a></li>
                             <li class="item_nonactive"><a data-toggle="tab" href="#tab-5">Custom Tab</a></li>
                         </ul>
@@ -915,18 +917,20 @@
                                 
                                 
                             </div>
-                            <div id="tab-review" class="tab-pane fade">
-                                <form>
+                            <div id="tab-review" class="tab-pane fade" style="display: none">
+                                <form action="/home/reviews/create" method="post" enctype="multipart/form-data">
+                                    {{csrf_field()}}
                                     <div id="review">
                                         <table class="table table-striped table-bordered">
                                             <tbody>
                                                 <tr>
-                                                    <td style="width: 50%;"><strong>Super Administrator</strong></td>
-                                                    <td class="text-right">29/07/2015</td>
+                                                    
+                                                    <td style="width: 50%;"><strong>期待你的精彩点评</strong></td>
+                                                    <td class="text-right create_at" style="display: none">{{date('Y-m-d H:i',time())}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2">
-                                                        <p>Best this product opencart</p>
+                                                        <p>{{$goodsinfos->prod_name}}</p>
                                                         <div class="ratings">
                                                             <div class="rating-box">
                                                                 <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
@@ -942,32 +946,138 @@
                                         </table>
                                         <div class="text-right"></div>
                                     </div>
-                                    <h2 id="review-title">Write a review</h2>
+                                    <h2 id="review-title">写评论</h2>
                                     <div class="contacts-form">
-                                        <div class="form-group"> <span class="icon icon-user"></span>
-                                            <input type="text" name="name" class="form-control" value="Your Name" onblur="if (this.value == '') {this.value = 'Your Name';}" onfocus="if(this.value == 'Your Name') {this.value = '';}"> 
-                                        </div>
                                         <div class="form-group"> <span class="icon icon-bubbles-2"></span>
-                                            <textarea class="form-control" name="text" onblur="if (this.value == '') {this.value = 'Your Review';}" onfocus="if(this.value == 'Your Review') {this.value = '';}">Your Review</textarea>
+                                            <textarea class="form-control" name="content"></textarea>
                                         </div> 
-                                        <span style="font-size: 11px;"><span class="text-danger">Note:</span>                       HTML is not translated!</span>
-                                        
+                                        <!-- <span style="font-size: 11px;"><span class="text-danger">Note:</span>                       HTML is not translated!</span> -->
+                                        <h2>图片</h2>
+                                        <input type="file" name="pic[]" multiple><br>
                                         <div class="form-group">
-                                         <b>Rating</b> <span>Bad</span>&nbsp;
-                                        <input type="radio" name="rating" value="1"> &nbsp;
-                                        <input type="radio" name="rating"
-                                        value="2"> &nbsp;
-                                        <input type="radio" name="rating"
-                                        value="3"> &nbsp;
-                                        <input type="radio" name="rating"
-                                        value="4"> &nbsp;
-                                        <input type="radio" name="rating"
-                                        value="5"> &nbsp;<span>Good</span>
+                                            <style>
+                                                a {
+                                                    color: #f1c40f;
+                                                }
+
+                                                a:hover,
+                                                a:active,
+                                                a:focus {
+                                                    color: #dab10d;
+                                                }
+
+                                                .rating-stars{
+                                                    width: 150px;
+                                                }
+
+                                                .rating-stars {
+                                                    width: 100%;
+                                                    text-align: left;
+                                                }
+                                                .rating-star-first{
+                                                   margin-left: -8px; 
+                                                }
+                                                
+
+                                                .rating-stars .rating-stars-container {
+                                                    font-size: 0px;
+                                                    width: 150px;
+                                                }
+                                               
+                                                .rating-stars .rating-stars-container .rating-star {
+                                                    display: inline-block;
+                                                    font-size: 16px;
+                                                    color: #555555;
+                                                    cursor: pointer;
+                                                    padding: 6px 6px;
+                                                }
+
+                                                .rating-stars .rating-stars-container .rating-star.is--active,
+                                                .rating-stars .rating-stars-container .rating-star.is--hover {
+                                                    color: #f1c40f;
+                                                }
+
+                                                .rating-stars .rating-stars-container .rating-star.is--no-hover {
+                                                    color: #555555;
+                                                }
+                                            </style>
+                                          
+
+                                        <h3>商品等级</h3>
+                                        <div class="rating-stars block" id="another-rating" style="width: 15%">
+                                            <input type="number" readonly class="form-control rating-value" name="star" id="another-rating-stars-value"
+                                                value="5" style="display: none;">
+                                            <div class="rating-stars-container">
+                                                <div class="rating-star rating-star-first">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-star" style="">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-star" style="">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-star" style="">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-star" style="">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <br />
+
+                                        
                                         
                                         </div>
-                                        <div class="buttons clearfix"><a id="button-review" class="btn buttonGray">Continue</a></div>
+                                        <div class="buttons clearfix">
+                                            <input type="text" name="prod_id" value="{{$goodsinfos->prod_id}}" style="display: none">
+                                            <!-- <a id="button-review" class="btn buttonGray">提交评论</a> -->
+                                            <input type="submit" name="" class="btn buttonGray" value="提交评论">
+                                        </div>
                                     </div>
                                 </form>
+                            </div>
+                            <div id="tab-reviews" class="tab-pane fade">
+                                <div class="comment-item" data-guid="a43b5ec9-c8f8-4230-83d0-078f303e88e4" data-top="">
+                                  <div class="user-column">
+                                    <div class="user-info">
+                                      <img alt="G***g" class="avatar" height="25" src="//storage.360buyimg.com/i.imageUpload/3339373530343737395f6d31343235363133303736353632_sma.jpg" width="25"/>
+                                      G***g
+                                    </div>
+                                    <div class="user-level"><span style="color: rgb(136, 136, 136);"></span></div>
+                                  </div>
+                                  <div class="comment-column J-comment-column">
+                                    <div class="comment-star star5"></div>
+                                    <p class="comment-con">
+                                      手机昨天买的，今天就到了，京东快递就是给力!
+                                      一加一直追求的是配置，8G+骁龙845就是快，索尼的高速摄像头表现也不错！      用习惯了一加3，新系统有点不习惯，    状态栏时间不能显示到秒，状态栏网速、电量百分比等等图标下拉才可以看见！    屏幕上滑显示的所有应用太乱，不能自己排序，希望下次更新能改进！
+                                    </p>
+                                    <div class="pic-list J-pic-list"><a class="J-thumb-img" data-ind="0" href="#none"><img alt="G***g的晒单图片" height="48" src="//img30.360buyimg.com/n0/s48x48_jfs/t17359/330/2696714453/23420/fb6df061/5b053698Nb003ac16.jpg" width="48"/></a></div>
+                                    <div class="J-pic-view-wrap clearfix" data-rotation="0"></div>
+                                    <div class="comment-message">
+                                      <div class="order-info">
+                                        <span>亮瓷黑</span>
+                                        <span>8GB 128GB</span>
+                                        <span>明星单品</span>
+                                        <span>2018-05-23 17:38</span>
+                                      </div>
+                                      <div class="comment-op">
+                                        <a class="J-report" clstag="shangpin|keycount|product|pingjiaubao" data-guid="a43b5ec9-c8f8-4230-83d0-078f303e88e4" data-login="1" href="#none">举报</a>
+                                        <a class="J-nice" data-guid="a43b5ec9-c8f8-4230-83d0-078f303e88e4" data-login="1" href="#none" title="54">
+                                          <i class="sprite-praise"></i>
+                                          54
+                                        </a>
+                                        <a href="//club.jd.com/repay/7285102_a43b5ec9-c8f8-4230-83d0-078f303e88e4_1.html" target="_blank">
+                                          <i class="sprite-comment"></i>
+                                          19
+                                        </a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <hr>
                             </div>
                             <div id="tab-4" class="tab-pane fade">
                                 <a href="#">Monitor</a>,
@@ -1356,10 +1466,13 @@
     <script type="text/javascript" src="/homes/js/themejs/so_megamenu.js"></script>
     <script type="text/javascript" src="/homes/js/themejs/addtocart.js"></script>
     <script type="text/javascript" src="/homes/js/themejs/application.js"></script>
+    <!-- <script type="text/javascript" src="/homes/js/jquery.min.js"></script> -->
+    <script type="text/javascript" src="/homes/js/jquery.rating-stars.min.js"></script>
     
 </body>
 @section('js')
     <script type="text/javascript">
+        //加入购物车
         $('#aaa').click(function(){
             var pid = $('.pid').val()
             var quantity = $('input[name=quantity]').val()
@@ -1372,6 +1485,7 @@
 
         })
 
+        //加入购物车
         $('.addToCart').click(function(){
             var pid = $(this).prev().val()
             $.get('/home/cart/create',{id:pid,quantity:1},function(data){
@@ -1380,6 +1494,37 @@
                 }
             })
         })
+
+        //星级评价
+       // $('input[name=star]').each(function(){
+       //  $(this).css({'-webkit-appearance':'none','background':'#f90','width':'13px','height':'13px'}).attr('checked',true)
+       //  var ra = $(this)
+       //  $(this).click(function(){
+       //      var xingji = $(this).val()
+       //      $('input[name=star]').each(function(){
+       //          if($(this).val()>xingji){
+       //              $(this).css('-webkit-appearance','').attr('checked',false)
+       //          }else{
+       //              $(this).css({'-webkit-appearance':'none','background':'#f90','width':'13px','height':'13px'}).attr('checked',true) 
+       //          }
+       //      })
+       //  })
+       // })
+
+       //星级评价
+        var ratingOptions = {
+            selectors: {
+                starsSelector: '.rating-stars',
+                starSelector: '.rating-star',
+                starActiveClass: 'is--active',
+                starHoverClass: 'is--hover',
+                starNoHoverClass: 'is--no-hover',
+                targetFormElementSelector: '.rating-value'
+            }
+        };
+
+        $(".rating-stars").ratingStars(ratingOptions);
+
     </script>
 
 @show    

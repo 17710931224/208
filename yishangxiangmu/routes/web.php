@@ -68,4 +68,7 @@ Route::any('home/tran','Home\OrderController@sport');
 Route::any('home/order/create','Home\OrderController@save');
 Route::any('home/order/history','Home\OrderController@history');
 Route::any('home/order/details/{id}','Home\OrderController@details');
-Route::any('/home/order/receipt','Home\OrderController@receipt');	
+Route::any('/home/order/receipt','Home\OrderController@receipt');
+
+//前台商品评论
+Route::any('/home/reviews/create','Home\ReviewsController@create');	
