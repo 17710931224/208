@@ -98,7 +98,7 @@
                                                         <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
                                                         <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
                                                         <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
                                                     </div>
                                                     <div class="content_price price">
                                                         <span class="price-new product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¥{{$v->price}}</font></font></span>&nbsp;&nbsp;

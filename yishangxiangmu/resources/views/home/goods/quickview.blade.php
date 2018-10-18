@@ -95,16 +95,15 @@
                             <div class="box-review form-group">
                                 <div class="ratings">
                                     <div class="rating-box">
-                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
                                     </div>
                                 </div>
 
-                                <a class="reviews_button" href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">0 评论</a>  | 
-                                <a class="write_review_button" href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">写评论</a>
+                                
                             </div>
 
                             <div class="product-label form-group">

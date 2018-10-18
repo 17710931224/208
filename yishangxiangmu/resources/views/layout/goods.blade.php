@@ -745,7 +745,7 @@
                                                 <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
                                                 <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
                                                 <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
                                             </div>
                                             <div class="content_price price">
                                                 <span class="price-new product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¥ {{$v->price}} </font></font></span>&nbsp;&nbsp;
@@ -966,14 +966,7 @@
                         <div class="footer-b">
                             <div class="bottom-cont">
                                 <a href="#"><img src="/homes/image/catalog/demo/payment/pay1.jpg" alt="图片"></a>
-                                <ul class="footer-links">
-                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关于我们</font></font></a></li>
-                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">客户服务</font></font></a></li>
-                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">隐私政策</font></font></a></li>
-                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网站地图</font></font></a></li>
-                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">订单和退货</font></font></a></li>
-                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联系我们</font></font></a></li>
-                                </ul>  
+                                 
                                 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">**订单满$ 350减$ 50，代码为BOO50。</font><font style="vertical-align: inherit;">订单满$ 500立减$ 75，折扣码为BOO75。</font><font style="vertical-align: inherit;">订单满$ 150减$ 150，使用折扣码BOO150。</font><font style="vertical-align: inherit;">有效期为2016年10月28日至2016年10月31日。优惠不可与其他优惠或促销活动同时使用，不可兑换且不可退款。</font><font style="vertical-align: inherit;">优惠只适用于美国境内。</font></font></p>
                             </div>
                         </div>
