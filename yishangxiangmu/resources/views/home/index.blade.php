@@ -26,12 +26,17 @@
                                
 							  <!-- Wrapper for slides -->
 							  <div class="carousel-inner" role="listbox">
+							   
 							    <div class="item active" id="geshi">
+							    
 							      <img src="{{$lunbo[0]->pic}}" class="cip" alt="...">
 							      <div class="carousel-caption">
 							        ...
 							      </div>
+							       
 							    </div>
+					
+							    
 							    <div class="item" id="geshi">
 							      <img src="{{$lunbo[1]->pic}}" class="cip" alt="...">
 							      <div class="carousel-caption">
@@ -86,7 +91,7 @@
                                                 </div>
                                                 <div class="item-info">
                                                     <div class="item-title" >
-                                                        <a  href="/home/product/{{$v->prod_id}}" target="_self" title="曼杜尔短"><font style="vertical-align: inherit;"><font style="vertical-align: inherit; ">{{$v->prod_name}} </font></font></a>
+                                                        <a  href="/home/product/{{$v->prod_id}}" target="_self" title="{{$v->prod_name}}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit; ">{{$v->prod_name}} </font></font></a>
                                                     </div>
                                                     <div class="rating">
                                                         <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
@@ -339,7 +344,7 @@
                                                 <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
                                                 <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
                                                 <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
                                             </div>
                                             <div class="content_price price">
                                                 <span class="price-new product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¥ {{$v->price}} </font></font></span>&nbsp;&nbsp;
@@ -611,7 +616,7 @@
                                                 <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
                                                 <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
                                                 <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
                                             </div>
                                             <div class="content_price price">
                                                 <span class="price-new product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¥ {{$v->price}} </font></font></span>&nbsp;&nbsp;
@@ -833,7 +838,7 @@
 
                                             <div class="item-available">
                                                 <div class="available">
-                                                  <span class="color_width" data-title="77%" data-toggle='tooltip' style="width: 77%"></span>
+                                                  <span class="color_width" data-title="77%" data-toggle='tooltip' style="width: {{$v->availability}}%"></span>
                                                 </div>                          
                                                 <p class="a2">Sold: <b>{{$v->availability}}</b>  </p>
                                             </div>
@@ -873,7 +878,7 @@
 
                      <div class="categoryslider-content">
                             <div class="item-cat-image" style="min-height: 351px;">
-                                <a href="#" title="Technology" target="_self">
+                                <a href="/search?prod_name=手机" title="Technology" target="_self">
                                   <img class="categories-loadimage" alt="Technology" src="/homes/image/catalog/demo/category/tab1.jpg">
                                 </a>
                             </div>
@@ -958,7 +963,7 @@
 
                         <div class="categoryslider-content">
                             <div class="item-cat-image" style="min-height: 351px;">
-                                <a href="#" title="Funiture & Decor" target="_self">
+                                <a href="/search?prod_name=家纺" title="Funiture & Decor" target="_self">
                                   <img class="categories-loadimage" alt="Funiture & Decor" src="/homes/image/catalog/demo/category/tab2.jpg">
                                 </a>
                             </div>
@@ -1009,6 +1014,7 @@
 		                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
 		                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
 		                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+
 		                                                </div>
 		                                                <span class="rating-num">( 2 )</span>
 		                                            </div>
@@ -1048,7 +1054,7 @@
 
                         <div class="categoryslider-content">
                             <div class="item-cat-image" style="min-height: 351px;">
-                                <a href="#" title="Fashion & Accessories" target="_self">
+                                <a href="/search?prod_name=服饰" title="Fashion & Accessories" target="_self">
                                   <img class="categories-loadimage" alt="Fashion & Accessories" src="/homes/image/catalog/demo/category/tab3.jpg">
                                 </a>
                             </div>

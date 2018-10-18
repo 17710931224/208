@@ -168,11 +168,11 @@
                              <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
                                 <form method="GET" action="/search">
                                     <div id="search0" class="search input-group form-group">
-                                        <div class="select_category filter_type  icon-select hidden-sm hidden-xs">
+                                        <div class="select_category filter_type   hidden-sm hidden-xs">
                                             <select class="no-border" name="cate_id">
                                                 <option value="0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所有类别</font></font></option>
                                                 
-                                                <option value=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></option>
+                                                
                                                 
                                             </select>
                                         </div>
