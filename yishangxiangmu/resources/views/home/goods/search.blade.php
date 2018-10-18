@@ -116,7 +116,7 @@
                                             </div>
                                             <span class="rating-num"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（2）</font></font></span>
                                         </div>
-                                        <h4><a href="product.html" title="熏牛肉培根" target="_self"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->prod_name}}</font></font></a></h4>
+                                        <h4><a class='goodss' href="product.html" title="熏牛肉培根" target="_self"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->prod_name}}</font></font></a></h4>
                                         
                                     </div>
                                     <p class="price">
@@ -124,7 +124,9 @@
                                       
                                     </p>
                                     <div class="description item-desc hidden">
-                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est . </p>
+                                        <p>服务承诺&nbsp;赠保价险&nbsp;正品保证&nbsp;极速退款&nbsp;七天无理由退换<br>
+                                           18:00前下单当天发货,18:00后次日发货<br>
+                                           收货当面验货,确认货物完好再签收</p>
                                     </div>
                                     <div class="list-block hidden">
                                         <input type="text" name="pid" value="{{$v->prod_id}}" style="display: none">

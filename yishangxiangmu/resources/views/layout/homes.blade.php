@@ -56,6 +56,8 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700' rel='stylesheet' type='text/css'>     
     <style type="text/css">
          body{font-family:'Poppins', sans-serif;}
+         #geshi{width:825px;height:350px;}
+         #geshi img{width:100%;height:100%;}
 
          .item-title  {display:block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
          .item-inner   {display:block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
@@ -334,7 +336,7 @@
                                                        @foreach($data as $k=>$v)
                                                        <li class="item-vertical  with-sub-menu hover">
                                                             <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
+                                                            <a href="/search?cate_id=0&prod_name=@php echo substr("{$v->cname}",0,strpos("{$v->cname}", '/')); @endphp" class="clearfix">
                                                                 <img src="/Homes/image/catalog/menu/icons/ico10.png" alt="图标">
                                                                 <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->cname}}</font></font></span>
                                                                 <b class="fa-angle-right"></b>

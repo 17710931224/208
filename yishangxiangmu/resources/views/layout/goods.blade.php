@@ -56,6 +56,27 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700' rel='stylesheet' type='text/css'>     
     <style type="text/css">
          body{font-family:'Poppins', sans-serif;}
+
+         .left-block{
+         	width: 200px;
+         	height: 200px;
+         }
+
+        .item-title{ text-overflow: -o-ellipsis-lastline;
+				  overflow: hidden;
+				  text-overflow: ellipsis;
+				  display: -webkit-box;
+				  -webkit-line-clamp: 2;
+				  line-clamp: 2;
+				  -webkit-box-orient: vertical;}
+
+        .goodss { text-overflow: -o-ellipsis-lastline;
+				  overflow: hidden;
+				  text-overflow: ellipsis;
+				  display: -webkit-box;
+				  -webkit-line-clamp: 2;
+				  line-clamp: 2;
+				  -webkit-box-orient: vertical;}
     </style>
 
 </head>
@@ -330,7 +351,7 @@
                                                        @foreach($data as $k=>$v)
                                                        <li class="item-vertical  with-sub-menu hover">
                                                             <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
+                                                            <a href="/search?cate_id=0&prod_name=@php echo substr("{$v->cname}",0,strpos("{$v->cname}", '/')); @endphp"" class="clearfix">
                                                                 <img src="/Homes/image/catalog/menu/icons/ico10.png" alt="图标">
                                                                 <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->cname}}</font></font></span>
                                                                 <b class="fa-angle-right"></b>
@@ -657,9 +678,9 @@
 
     <div class="main-container container">
         <ul class="breadcrumb">
-            <li><a href="#"><i class="fa fa-home"></i></a></li>
+            <li><a href="/"><i class="fa fa-home"></i></a></li>
       
-            <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">123</font></font></a></li>
+            <li><a href="search?cate_id=0&prod_name={{$cate_id}}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$cate[0]->cname}}</font></font></a></li>
            
            
         </ul>
@@ -674,7 +695,7 @@
                         <div class="box-category">
                             <ul id="cat_accordion" class="list-group">
                                 @foreach($data as $k=>$v)
-                                <li class="hadchild cutom-parent-li"><a href="#" class="cutom-parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->cname}}</font></font><span class="dcjq-icon"></span></a>   <span class="button-view  fa fa-plus-square-o"></span>
+                                <li class="hadchild cutom-parent-li"><a href="/search?cate_id=0&prod_name=@php echo substr("{$v->cname}",0,strpos("{$v->cname}", '/')); @endphp" class="cutom-parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->cname}}</font></font><span class="dcjq-icon"></span></a>   <span class="button-view  fa fa-plus-square-o"></span>
                                  @if($v->sub)
                                     <ul style="display: none;">
                                      @foreach($v->sub as $kk=>$vv)

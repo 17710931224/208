@@ -298,6 +298,17 @@ desired effect
             <li><a href="/admin/goods"> - 管理</a></li>
           </ul>
        </li>
+       <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>轮播模组</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/admin/lunbo/create"> - 新增</a></li>
+            <li><a href="/admin/lunbo"> - 管理</a></li>
+          </ul>
+       </li>
 	   <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>订单模组</span>
             <span class="pull-right-container">

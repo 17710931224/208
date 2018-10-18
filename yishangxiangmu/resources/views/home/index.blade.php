@@ -1,5 +1,5 @@
 @extends('layout.homes')
-
+      
 @section('title',$title)
 
 @section('content')
@@ -14,25 +14,50 @@
             </div>    
             <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 main-right">
                 <div class="slider-container row"> 
-                                
+                    @php $lunbo= \DB::table('es_carousel')->where('status','1')->get()  @endphp
                     <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 col2">
-                        <div class="module sohomepage-slider ">
-                            <div class="yt-content-slider owl2-carousel owl2-theme owl2-responsive-1200 owl2-loaded" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="0" data-items_column00="1" data-items_column0="1" data-items_column1="1" data-items_column2="1" data-items_column3="1" data-items_column4="1" data-arrows="no" data-pagination="yes" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
-                                
-                                
-                                
-                            <div class="owl2-stage-outer"><div class="owl2-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 2475px;"><div class="owl2-item active" style="width: 825px; margin-right: 0px;"><div class="yt-content-slide">
-                                    <a href="#"><img src="/homes/image/catalog/slideshow/home1/slider-1.jpg" alt="slider1" class="img-responsive"></a>
-                                </div></div><div class="owl2-item" style="width: 825px; margin-right: 0px;"><div class="yt-content-slide">
-                                    <a href="#"><img src="/homes/image/catalog/slideshow/home1/slider-2.jpg" alt="slider2" class="img-responsive"></a>
-                                </div></div><div class="owl2-item" style="width: 825px; margin-right: 0px;"><div class="yt-content-slide">
-                                    <a href="#"><img src="/homes/image/catalog/slideshow/home1/slider-3.jpg" alt="slider3" class="img-responsive"></a>
-                                </div></div></div></div><div class="owl2-controls"><div class="owl2-nav"><div class="owl2-prev" style="display: none;"></div><div class="owl2-next" style="display: none;"></div></div></div></div>
-                            
-                            <div class="loadeding"></div>
-                        </div>
-                        
-                    </div>
+					    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  							<!-- Indicators -->
+							  <ol class="carousel-indicators">
+							    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+							    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+							    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+							  </ol>
+                               
+							  <!-- Wrapper for slides -->
+							  <div class="carousel-inner" role="listbox">
+							    <div class="item active" id="geshi">
+							      <img src="{{$lunbo[0]->pic}}" class="cip" alt="...">
+							      <div class="carousel-caption">
+							        ...
+							      </div>
+							    </div>
+							    <div class="item" id="geshi">
+							      <img src="{{$lunbo[1]->pic}}" class="cip" alt="...">
+							      <div class="carousel-caption">
+							        ...
+							      </div>
+							    </div>
+							    <div class="item" id="geshi">
+							      <img src="{{$lunbo[2]->pic}}" class="cip" alt="...">
+							      <div class="carousel-caption">
+							        ...
+							      </div>
+							    </div>
+							    
+							  </div>
+
+							  <!-- Controls -->
+							  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+							    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							    <span class="sr-only">Previous</span>
+							  </a>
+							  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+							    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+							    <span class="sr-only">Next</span>
+							  </a>
+							</div>
+					</div>
 
                     
                     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 col3">
@@ -277,7 +302,7 @@
                 <div class="module">
                     <div class="banners banners2">
                         <div class="banner">
-                            <a href="#"><img src="/homes/image/catalog/banners/banner1.jpg" alt="图片"></a>
+                            <a href="#"><img src="/homes/image/catalog/banners/timg.jpg" alt="图片"></a>
                         </div>
                     </div>
                 </div>
@@ -672,18 +697,18 @@
                 </div>
                 
                 <div class="module testimonials">
-                    <h3 class="modtitle"><span>Testimonials</span></h3>
+                    <h3 class="modtitle"><span>合作伙伴</span></h3>
                     <div class="slider-testimonials">
                         <div class="yt-content-slider contentslider" data-rtl="no" data-loop="yes" data-autoplay="no" data-autoheight="no" data-autowidth="no" data-delay="4" data-speed="0.6" data-margin="0" data-items_column00="1" data-items_column0="1" data-items_column1="1" data-items_column2="1" data-items_column3="1" data-items_column4="1" data-arrows="no" data-pagination="yes" data-lazyload="yes" data-hoverpause="yes">
                             <div class="item">
-                                <div class="img"><img src="/homes/image/catalog/demo/client/user-1.jpg" alt="Image"></div>
-                                <div class="name">Johny Walker</div>
-                                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore”</p>          
+                                <div class="img"><img src="/homes/image/catalog/demo/client/user-4.jpg" alt="Image"></div>
+                                <div class="name">史蒂夫·乔布斯（Steve Jobs)</div>
+                                <p>“史蒂夫·乔布斯   （Steve Jobs，1955年2月24日—2011年10月5日   ），出生于美国加利福尼亚州旧金山，美国发明家、企业家、美国苹果公司联合创办人,网站战略合作伙伴之一”</p>          
                             </div>
                             <div class="item">
-                                <div class="img"><img src="/homes/image/catalog/demo/client/user-2.jpg" alt="Image"></div>
-                                <div class="name">Jen Nguyen</div>
-                                <p>“Ut enim ad minim veniam, lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incidi”</p>          
+                                <div class="img"><img src="/homes/image/catalog/demo/client/user-5.jpg" alt="Image"></div>
+                                <div class="name">马克·艾略特·扎克伯格（Mark Elliot Zuckerberg）</div>
+                                <p>“1984年5月14日生于美国纽约州白原市，社交网站Facebook（脸书）的创始人兼首席执行官 ，被人们冠以“第二盖茨”的美誉,网站战略合作伙伴之一。”</p>          
                             </div>
                             <div class="item">
                                 <div class="img"><img src="/homes/image/catalog/demo/client/user-3.jpg" alt="Image"></div>
