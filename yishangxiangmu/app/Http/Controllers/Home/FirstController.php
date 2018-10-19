@@ -28,7 +28,7 @@ class FirstController extends Controller
     	$computer = DB::table('es_products')->where('prod_name','like','%电脑整机%')->orderBy('price', 'desc')->get();
     	
         
-    	$times = DB::table('es_products')->where('created_at','=','2018-10-15')->take(4)->orderBy('price', 'asc')->get();
+    	$times = DB::table('es_products')->where('created_at','=','2018-10-15')->inRandomOrder()->take(4)->orderBy('price', 'asc')->get();
   
 
 

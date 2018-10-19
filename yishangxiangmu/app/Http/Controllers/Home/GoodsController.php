@@ -56,7 +56,7 @@ class GoodsController extends Controller
 
 
      	 
-     	$goods = DB::table('es_products')->inRandomOrder()->take(5)->get();
+     	$goods = DB::table('es_products')->inRandomOrder()->take(8)->get();
         
      	 return view('home.goods.search',[
      	 	'title'=>'商品页',
@@ -80,10 +80,12 @@ class GoodsController extends Controller
         //$gpics = DB::table('prod_pic')->where('cid','=',$cgoods)->get();
         //
         $gpics = DB::table('prod_pic')->where('cid',$goodsinfos->prod_id)->get();
+
+        $times = DB::table('es_products')->where('created_at','=','2018-10-16')->inRandomOrder()->take(4)->orderBy('price', 'asc')->get();
         
 
     
-        $goods = DB::table('es_products')->inRandomOrder()->take(5)->get();
+        $goods = DB::table('es_products')->inRandomOrder()->take(8)->get();
 
         //评论查询
         $reviews = Reviews::orderBy('id','desc')->where('prod_id',$id)->paginate(3);
@@ -100,7 +102,7 @@ class GoodsController extends Controller
         //查询评论回复
         // dd($reviews);
 
-     	return view('home.goods.product',['title'=>'商品详情页','goods'=>$goods,'goodsinfos'=>$goodsinfos,'gpics'=>$gpics,'reviews'=>$reviews,'count'=>$count]);
+     	return view('home.goods.product',['title'=>'商品详情页','goods'=>$goods,'goodsinfos'=>$goodsinfos,'gpics'=>$gpics,'reviews'=>$reviews,'count'=>$count,'times'=>$times]);
      }
 
 
@@ -113,3 +115,6 @@ class GoodsController extends Controller
      }
 
 }
+
+
+ 
