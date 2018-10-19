@@ -16,15 +16,13 @@ class GoodsController extends Controller
 {   
 
 
-   public function index()
+   public function index(Request $request)
    {
       
-
       
 
 
-
-      return view('layout.goods',['title'=>'商品页']);
+      return view('layout.goods',['title'=>'商品页','cates'=>$cates]);
    }
 
 
@@ -41,6 +39,8 @@ class GoodsController extends Controller
 
        $goods = DB::table('es_products')->inRandomOrder()->take(5)->get();    //左侧商品随机显示
        
+       
+
 
        return view('home.goods.goods',['title'=>'商品页','goodsinfos'=>$goodsinfos,'cate'=>$cate,'cates'=>$cates,'goods'=>$goods]);
      }
@@ -48,24 +48,31 @@ class GoodsController extends Controller
 
      public function search(Request $request)
      {
-     	 $res = DB::table('es_products')->where('prod_name','like','%'.$request->input('prod_name').'%')->get();
-
-        
-
-     	 $cates = DB::table('es_categroies')->where('pid','=','0')->get();
      	 
+
+     	 $res = DB::table('es_products')->where('prod_name','like','%'.$request->input('prod_name').'%')->get();
+         
+
+         $cate = DB::table('es_categroies')->where('cname','like','%'.$request->input('prod_name').'%')->get();
+   
+         
 
        //   $cid = DB::table('es_categroies')->where('cid','=',$request->input('cate_id'))->pluck('path');
          
        //   $cid_id = DB::table('es_categroies')->where('pid','=',$request->input('cate_id'))->pluck('cid');
-       //   $cate_id = $request->input('cate_id');
+        $cate_id = $request->input('prod_name');
 
 
      	 // $cate = DB::table('es_categroies')->where('path','=',$cid[0].$cate_id.','.$cid_id[0].',')->get();
      	
      	$goods = DB::table('es_products')->inRandomOrder()->take(5)->get();
         
-     	 return view('home.goods.search',['title'=>'商品页','res'=>$res,'goods'=>$goods]);
+     	 return view('home.goods.search',[
+     	 	'title'=>'商品页',
+     	 	'res'=>$res,
+     	 	'goods'=>$goods,
+     	 	'cate'=>$cate,
+     	 	'cate_id'=>$cate_id]);
      } 
 
 

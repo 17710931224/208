@@ -56,6 +56,8 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700' rel='stylesheet' type='text/css'>     
     <style type="text/css">
          body{font-family:'Poppins', sans-serif;}
+         #geshi{width:825px;height:350px;}
+         #geshi img{width:100%;height:100%;}
 
          .item-title  {display:block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
          .item-inner   {display:block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
@@ -149,11 +151,11 @@
                             <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
                                 <form method="GET" action="/search">
                                     <div id="search0" class="search input-group form-group">
-                                        <div class="select_category filter_type  icon-select hidden-sm hidden-xs">
-                                            <select class="no-border" name="cate_id">
+                                        <div class="select_category filter_type   hidden-sm hidden-xs">
+                                            <select class="no-border" name="cate_id" >
                                                 <option value="0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所有类别</font></font></option>
                                                 
-                                                <option value=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></option>
+                                                
                                                 
                                             </select>
                                         </div>
@@ -334,7 +336,7 @@
                                                        @foreach($data as $k=>$v)
                                                        <li class="item-vertical  with-sub-menu hover">
                                                             <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
+                                                            <a href="/search?cate_id=0&prod_name=@php echo substr("{$v->cname}",0,strpos("{$v->cname}", '/')); @endphp" class="clearfix">
                                                                 <img src="/Homes/image/catalog/menu/icons/ico10.png" alt="图标">
                                                                 <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->cname}}</font></font></span>
                                                                 <b class="fa-angle-right"></b>
@@ -854,14 +856,7 @@
                         <div class="footer-b">
                             <div class="bottom-cont">
                                 <a href="#"><img src="/homes/image/catalog/demo/payment/pay1.jpg" alt="图片"></a>
-                                <ul class="footer-links">
-                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关于我们</font></font></a></li>
-                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">客户服务</font></font></a></li>
-                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">隐私政策</font></font></a></li>
-                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网站地图</font></font></a></li>
-                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">订单和退货</font></font></a></li>
-                                    <li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联系我们</font></font></a></li>
-                                </ul>  
+                                 
                                 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">**订单满$ 350减$ 50，代码为BOO50。</font><font style="vertical-align: inherit;">订单满$ 500立减$ 75，折扣码为BOO75。</font><font style="vertical-align: inherit;">订单满$ 150减$ 150，使用折扣码BOO150。</font><font style="vertical-align: inherit;">有效期为2016年10月28日至2016年10月31日。优惠不可与其他优惠或促销活动同时使用，不可兑换且不可退款。</font><font style="vertical-align: inherit;">优惠只适用于美国境内。</font></font></p>
                             </div>
                         </div>
