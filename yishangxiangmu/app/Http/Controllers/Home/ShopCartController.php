@@ -27,12 +27,12 @@ class ShopCartController extends Controller
         // const REQ = $request->id;
         $goods = DB::table('es_products')->where('prod_id',$request->id)->get();
         $pic = DB::table('prod_pic')->where('cid',$request->id)->get();
-        $cart = Cart::where('uid',2)->where('pid',$request->id)->get();
+        $cart = Cart::where('uid',1)->where('pid',$request->id)->get();
 
         if($cart == "[]"){
         
             $res = Cart::insert([
-                "uid"=>2,
+                "uid"=>1,
                 "pid"=>$goods[0]->prod_id,
                 "pic"=>$pic[0]->pic,
                 "prod_name"=>$goods[0]->prod_name,

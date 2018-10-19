@@ -28,7 +28,7 @@
 								<fieldset id="account">
 								  <div class="form-group required">
 									<label for="input-payment-firstname" class="control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" class="name">姓名</font></font></label>
-									<input type="text" name="uid" value="5" style="display: none" value="2">
+									<input type="text" name="uid" value="1" style="display: none" value="2">
 									<input type="text" class="form-control" id="input-payment-firstname" placeholder="First Name" value="" name="uname" style="width: 95%">
 								  </div>
 								  <div class="form-group required">
@@ -152,7 +152,7 @@
 									<tbody>
 									@foreach($res as $rs)	
 									  <tr>
-										<td class="text-center"><a href="/home/product/{{$rs->pid}}"><img width="60px" src="image/catalog/demo/product/fashion/10.jpg" alt="{{$rs->prod_name}}" title="{{$rs->prod_name}}" class="img-thumbnail"></a></td>
+										<td class="text-center"><a href="/home/product/{{$rs->pid}}"><img width="80px" src="{{$rs->pic}}" alt="{{$rs->prod_name}}" title="{{$rs->prod_name}}" class="img-thumbnail"></a></td>
 										<td class="text-left"><a href="/home/product/{{$rs->pid}}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$rs->prod_name}}</font></font></a></td>
 										<td class="text-left" style="text-align: center;">{{$rs->quantity}}</td>
 										<td class="text-right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¥ {{$rs->price}}</font></font></td>

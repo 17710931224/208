@@ -9,6 +9,9 @@ use App\Model\Admin\Cate;
 
 use DB;
 
+use App\Model\Home\Reviews;
+use App\Model\Home\Reviews_pic;
+
 class GoodsController extends Controller
 {   
 
@@ -84,7 +87,22 @@ class GoodsController extends Controller
     
         $goods = DB::table('es_products')->inRandomOrder()->take(5)->get();
 
-     	return view('home.goods.product',['title'=>'商品详情页','goods'=>$goods,'goodsinfos'=>$goodsinfos,'gpics'=>$gpics]);
+        //评论查询
+        $reviews = Reviews::orderBy('id','desc')->where('prod_id',$id)->paginate(3);
+        
+        $count = Reviews::where('prod_id',$id)->count();
+        // dd($tiaoshu);
+        foreach ($reviews as $k => $v) {
+             $v['pic'] = $v->goodspic()->get();
+             $v['reply'] = $v->reply()->orderBy('id',"desc")->take(5)->get();
+             $v['reply_count'] = $v->reply()->count();
+
+        }
+
+        //查询评论回复
+        // dd($reviews);
+
+     	return view('home.goods.product',['title'=>'商品详情页','goods'=>$goods,'goodsinfos'=>$goodsinfos,'gpics'=>$gpics,'reviews'=>$reviews,'count'=>$count]);
      }
 
 

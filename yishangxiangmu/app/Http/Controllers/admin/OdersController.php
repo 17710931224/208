@@ -32,7 +32,7 @@ class OdersController extends Controller
             $query->where('order_number','like','%'.$orders.'%');
         }
     })
-    ->paginate($request->input('onum', 3));
+    ->paginate($request->input('onum', 10));
         // dump($request);
         // $res =  Orders::get();
         return view('admin.Order.index',['title'=>'订单添加','res'=>$res,'request'=>$request] );

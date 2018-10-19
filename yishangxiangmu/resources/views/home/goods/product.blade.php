@@ -17,6 +17,7 @@
     
     <!-- Favicon
     ============================================ -->
+    <!-- <link type="text/css" rel="stylesheet" href="/page/css/paging.css"> -->
     <link rel="shortcut icon" type="image/png" href="ico/favicon-16x16.png"/>
   
    
@@ -53,9 +54,9 @@
     </style>
 
     <style>
-                                                a {
+                                                /*a {
                                                     color: #f1c40f;
-                                                }
+                                                }*/
 
                                                 a:hover,
                                                 a:active,
@@ -836,7 +837,7 @@
                                     </div>
                                 </div>
 
-                                <a class="reviews_button" href="" onclick="$('a[href=\'#tab-reviews\']').trigger('click'); return false;">0 评论</a>  | 
+                                <a class="reviews_button" href="" onclick="$('a[href=\'#tab-reviews\']').trigger('click'); return false;">{{$count}} 评论</a>  | 
                                 <a class="write_review_button" href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); $('#tab-review').css('display','block'); return false;">写评论</a>
                             </div>
 
@@ -952,7 +953,7 @@
                     <div class="tabsslider  vertical-tabs col-xs-12">
                         <ul class="nav nav-tabs col-lg-2 col-sm-3">
                             <li class="active"><a data-toggle="tab" href="#tab-1">商品描述</a></li>
-                            <li class="item_nonactive"><a data-toggle="tab" href="#tab-reviews" onclick="$('#tab-review').css('display','none')">商品评论 (1)</a></li>
+                            <li class="item_nonactive"><a data-toggle="tab" href="#tab-reviews" onclick="$('#tab-review').css('display','none')">商品评论 ({{$count}})</a></li>
                             <li class="item_nonactive"><a data-toggle="tab" href="#tab-review" style="display: none">书写评论 (1)</a></li>
                             <li class="item_nonactive"><a data-toggle="tab" href="#tab-4">Tags</a></li>
                             <li class="item_nonactive"><a data-toggle="tab" href="#tab-5">Custom Tab</a></li>
@@ -964,7 +965,7 @@
                                 
                             </div>
                             <div id="tab-review" class="tab-pane fade" style="display: none">
-                                <form action="/home/reviews/create" method="post" enctype="multipart/form-data">
+                                <form action="/home/reviews/create" method="post" enctype="multipart/form-data" class="pl">
                                     {{csrf_field()}}
                                     <div id="review">
                                         <table class="table table-striped table-bordered">
@@ -992,13 +993,13 @@
                                         </table>
                                         <div class="text-right"></div>
                                     </div>
-                                    <h2 id="review-title">写评论</h2>
+                                    <h3 id="review-title">写评论</h3>
                                     <div class="contacts-form">
                                         <div class="form-group"> <span class="icon icon-bubbles-2"></span>
                                             <textarea class="form-control" name="content" id="pinglun"></textarea>
                                         </div> 
                                         <!-- <span style="font-size: 11px;"><span class="text-danger">Note:</span>                       HTML is not translated!</span> -->
-                                        <h2>图片</h2>
+                                        <h3>图片</h3>
                                         <input type="file" name="pic[]" multiple><br>
                                         <div class="form-group">
                                         <h3>商品等级</h3>
@@ -1026,8 +1027,6 @@
                                         <br />
                                         <br />
 
-                                        
-                                        
                                         </div>
                                         <div class="buttons clearfix">
                                             <input type="text" name="prod_id" value="{{$goodsinfos->prod_id}}" style="display: none">
@@ -1037,46 +1036,110 @@
                                     </div>
                                 </form>
                             </div>
+
+                            
                             <div id="tab-reviews" class="tab-pane fade">
+                                @foreach($reviews as  $k => $v)
                                 <div class="comment-item" data-guid="a43b5ec9-c8f8-4230-83d0-078f303e88e4" data-top="">
                                   <div class="user-column">
-                                    <div class="user-info">
+                                    <div class="user-info" style="width: 20%">
                                       <img alt="G***g" class="avatar" height="25" src="//storage.360buyimg.com/i.imageUpload/3339373530343737395f6d31343235363133303736353632_sma.jpg" width="25"/>
                                       G***g
                                     </div>
+                                    <div class="rating-stars block" id="another-rating" style="width: 15%">
+                                            <input type="number" readonly class="form-control rating-value" name="star" id="another-rating-stars-value"
+                                                value="{{$v->star}}" style="display: none;">
+                                            <div class="rating-stars-container">
+                                                <div class="rating-star rating-star-first">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-star" style="">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-star" style="">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-star" style="">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="rating-star" style="">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     <div class="user-level"><span style="color: rgb(136, 136, 136);"></span></div>
                                   </div>
                                   <div class="comment-column J-comment-column">
                                     <div class="comment-star star5"></div>
-                                    <p class="comment-con">
-                                      手机昨天买的，今天就到了，京东快递就是给力!
-                                      一加一直追求的是配置，8G+骁龙845就是快，索尼的高速摄像头表现也不错！      用习惯了一加3，新系统有点不习惯，    状态栏时间不能显示到秒，状态栏网速、电量百分比等等图标下拉才可以看见！    屏幕上滑显示的所有应用太乱，不能自己排序，希望下次更新能改进！
+                                    <p class="comment-con">{{$v->content}}
                                     </p>
-                                    <div class="pic-list J-pic-list"><a class="J-thumb-img" data-ind="0" href="#none"><img alt="G***g的晒单图片" height="48" src="//img30.360buyimg.com/n0/s48x48_jfs/t17359/330/2696714453/23420/fb6df061/5b053698Nb003ac16.jpg" width="48"/></a></div>
-                                    <div class="J-pic-view-wrap clearfix" data-rotation="0"></div>
+                                    <div class="pic-list J-pic-list">
+                                        @foreach($v->pic as $vv)
+                                        <a class="J-thumb-img" data-ind="0" href="#none"><img alt="G***g的晒单图片" height="48" src="{{$vv->pic}}" width="48"/></a>
+                                        
+                                        @endforeach
+                                    </div>
+                                    <br>
+                                    <div style="display: none" class="yincan"><img src="" style="width: 400px"></div><br>
+                                    <!-- <div class="J-pic-view-wrap clearfix" data-rotation="0"></div> -->
                                     <div class="comment-message">
                                       <div class="order-info">
-                                        <span>亮瓷黑</span>
-                                        <span>8GB 128GB</span>
-                                        <span>明星单品</span>
-                                        <span>2018-05-23 17:38</span>
+                                        <span>{{$goodsinfos->prod_name}}</span>
+                                        <span>{{date('Y-m-d H:i',$v->create_at)}}</span>
                                       </div>
                                       <div class="comment-op">
-                                        <a class="J-report" clstag="shangpin|keycount|product|pingjiaubao" data-guid="a43b5ec9-c8f8-4230-83d0-078f303e88e4" data-login="1" href="#none">举报</a>
-                                        <a class="J-nice" data-guid="a43b5ec9-c8f8-4230-83d0-078f303e88e4" data-login="1" href="#none" title="54">
-                                          <i class="sprite-praise"></i>
-                                          54
-                                        </a>
+                                        <input type="text" name="rid" value="{{$v->id}}" style="display: none">
+                                        <a href="javascript:void(0)" style="float: right; font-size: 16px; margin: 0px 15px -12px;" title="写消息" class="comments"><i class="fa  fa-commenting-o  "></i>&nbsp;<span>{{$v->reply_count}}</span></a>
+
+                                        <a href="javascript:void(0)" style="float: right; font-size: 16px; margin: 0px 15px -12px;" title="顶他" class="like"><i class="fa fa-thumbs-o-up"></i>&nbsp;<span>{{$v->like}}</span></a>
+
+                                        <a href="javascript:void(0)" style="float: right; font-size: 16px; margin: 0px 15px -12px" title="踩他" class="step-on"><i class="fa  fa-thumbs-o-down"></i>&nbsp;<span>{{$v->stepon}}</span></a>
+
                                         <a href="//club.jd.com/repay/7285102_a43b5ec9-c8f8-4230-83d0-078f303e88e4_1.html" target="_blank">
-                                          <i class="sprite-comment"></i>
-                                          19
+                                          <!-- <i class="sprite-comment"></i>
+                                          19 -->
                                         </a>
                                       </div>
+                                      <hr>
                                     </div>
                                   </div>
+                                  
+                                <div style="display: none" class="huifudiv">
+                                    <textarea class="form-control reply" rows="3"></textarea>
+                                    <br>
+                                    <input type="submit" name="huifu" class="btn btn-info" value="提交评论" style="float: right;">
+                                    <br>
+                                    <hr>
+                                    @foreach($v->reply as $va)
+                                    <div class="item" style="margin: 20px 0px 0px 15px;">
+                                        <div class="tt">
+                                            <span class="name">
+                                                {{$va->reply_content}}
+                                            </span>:
+                                            B站好评
+                                        </div>
+                                        <div class="tc clearfix" uh="4" ud="0" un="Evipper" cid="11866730145" rid="387132963" parentid="0">
+                                            <a href="#none" class="a_reply">回复</a>
+                                            <span class="time">{{date('Y-m-d H:i',$va->create_at)}}</span>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    @endforeach
                                 </div>
-                                <hr>
+                                </div>
+                                
+                                <br>
+                                <!-- <form></form> -->
+                                <br>
+                                <br>
+                                @endforeach
+                                {{ $reviews->links() }}
+                               
                             </div>
+                            <div class="box" id="box"></div>
+
+
                             <div id="tab-4" class="tab-pane fade">
                                 <a href="#">Monitor</a>,
                                 <a href="#">Apple</a>               
@@ -1466,6 +1529,9 @@
     <script type="text/javascript" src="/homes/js/themejs/application.js"></script>
     <!-- <script type="text/javascript" src="/homes/js/jquery.min.js"></script> -->
     <script type="text/javascript" src="/homes/js/jquery.rating-stars.min.js"></script>
+
+    <!-- <script type="text/javascript" src="/page/js/jquery.min.js"></script> -->
+    <!-- <script type="text/javascript" src="/page/js/paging.js"></script> -->
     
 </body>
 @section('js')
@@ -1507,16 +1573,113 @@
 
         $(".rating-stars").ratingStars(ratingOptions);
 
-        //提交验证
-        $('form').submit(function(){
+        //评论提交验证
+        $('.pl').submit(function(){
+            var YZ
             var ss = $('#pinglun').val()
-             var reg = /^([\u4e00-\u9fa5]|[0-9]|[,]|[，]|[。]|[.]|["]|[“]|[”]|[']|[‘]|[’]|[;]|[；]|[：]|[;]|[?]|[？]|[:]|[、]|[!]|[！]){0,200}$/
+             var reg = /^([\u4e00-\u9fa5]|[0-9]|[,]|[，]|[。]|[.]|["]|[“]|[”]|[']|[‘]|[’]|[;]|[；]|[：]|[;]|[?]|[？]|[:]|[、]|[!]|[！]|[/]|[`]|[·]|[~]|[~]|[（]|[）]|[()]|[)]|[=]|[+]|[-]|[_]|[*]|[——]|[ ]){0,200}$/
             // console.log(ss)
             if(!reg.test(ss)){
+                YZ = false;
                 alert('不能输入特殊符号');
+            }else if(ss == ''){
+                YZ == false;
+                alert('评论内容不能为空');
+            }else{
+                YZ = true;
+            }
+            if(YZ){
+                return true;
             }
 
             return false
+        })
+
+        //评论小图图片点击放大
+        $('.J-thumb-img').click(function(){
+           var ss = $(this).find('img').attr('src')
+           $(this).parents('.J-pic-list').siblings('.yincan').css('display','block')
+           $(this).parents('.J-pic-list').siblings('.yincan').find('img').attr('src',ss)
+           // console.log(ss)
+        })
+
+        //点赞
+        $('.like').each(function(){
+            $(this).click(function(){
+                var ss = $(this)
+                var like = $(this).find('span').text()
+                // console.log(like)
+                like++
+                var rid = $(this).siblings('input[name=rid]').val()
+                $.get('/home/reviews/like',{id:rid},function(data){
+                    if(data == '1'){
+                        ss.find('span').text(like)
+                    }else{
+
+                    }
+                })
+            })
+        })
+
+        //踩一脚
+        $('.step-on').each(function(){
+            $(this).click(function(){
+                var step = $(this)
+                var stepon = $(this).find('span').text()
+                // console.log(stepon)
+                stepon++
+                var rid = $(this).siblings('input[name=rid]').val()
+                // console.log(rid)
+                 $.get('/home/reviews/stepon',{id:rid},function(data){
+                    // console.log(data)
+                    if (data == "1") {
+                        step.find('span').text(stepon)
+                    }else{
+
+                    }
+                })
+            })
+        })
+
+        $('.comments').each(function(){
+            $(this).click(function(){
+                // $(this).parents('.comment-item').find('.huifudiv').css('display','block')
+                if($(this).parents('.comment-item').find('.huifudiv').is(':hidden')){//如果当前隐藏
+                $(this).parents('.comment-item').find('.huifudiv').show();//那么就显示div
+                }else{//否则
+                $(this).parents('.comment-item').find('.huifudiv').hide();//就隐藏div
+                }
+            })
+        })
+
+        $('input[name=huifu]').click(function(){
+            var ss = $(this)
+            var rid = $(this).parents('.comment-item').find('input[name=rid]').val()
+            // console.log(rid)
+            var content = $(this).siblings('.reply').val()
+            if(content == ""){
+                alert('回复内容不能为空')
+            }
+            // console.log(content)
+            $.get('/home/reply',{rid:rid,content:content,uid:1},function(data){
+                console.log(data)
+                if(data == '1'){
+                    alert('回复成功')
+                    ss.siblings('.reply').val(null)
+                }
+            })
+        })
+
+
+
+        $(function(){
+            $('#lol').click(function(){//点击a标签
+                if($('#timo').is(':hidden')){//如果当前隐藏
+                $('#timo').show();//那么就显示div
+                }else{//否则
+                $('#timo').hide();//就隐藏div
+                }
+            })
         })
     </script>
 

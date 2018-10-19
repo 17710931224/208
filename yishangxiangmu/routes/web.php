@@ -28,6 +28,7 @@ Route::group([],function(){
     
 });
 
+
 //前台模板
 Route::group([],function(){
          
@@ -63,12 +64,17 @@ Route::any('home/cart/update','Home\ShopCartController@update');
 Route::any('home/cart/delete','Home\ShopCartController@delete');
 
 //前台订单管理
-Route::any('home/order/checkout','Home\OrderController@checkout');
-Route::any('home/tran','Home\OrderController@sport');
-Route::any('home/order/create','Home\OrderController@save');
-Route::any('home/order/history','Home\OrderController@history');
-Route::any('home/order/details/{id}','Home\OrderController@details');
-Route::any('/home/order/receipt','Home\OrderController@receipt');
+Route::any('home/order/checkout', 'Home\OrderController@checkout');
+Route::any('home/tran', 'Home\OrderController@sport');
+Route::any('home/order/create', 'Home\OrderController@save');
+Route::any('home/order/success', 'Home\OrderController@success');
+Route::any('home/order/history', 'Home\OrderController@history');
+Route::any('home/order/details/{id}', 'Home\OrderController@details');
+Route::any('/home/order/receipt', 'Home\OrderController@receipt');
 
 //前台商品评论
 Route::any('/home/reviews/create','Home\ReviewsController@create');	
+Route::any('/home/reviews/like','Home\ReviewsController@like');	
+Route::any('/home/reviews/stepon','Home\ReviewsController@stepon');
+//评论回复
+Route::any('/home/reply','Home\ReviewsController@reply');

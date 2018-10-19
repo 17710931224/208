@@ -4,7 +4,7 @@ namespace App\Model\Home;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Reviews extends Model
+class Reviews_reply extends Model
 {
     //
     /**
@@ -12,7 +12,7 @@ class Reviews extends Model
      *
      * @var string
      */
-    protected $table = 'es_reviews';
+    protected $table = 'es_reply';
 
     //关联主键
     protected $primaryKey = 'id';
@@ -30,17 +30,4 @@ class Reviews extends Model
 	 * @var array
 	 */
 	protected $guarded = [];
-
-	/**
-     * 获得此博客文章的评论。
-     */
-    public function goodspic()
-    {
-        return $this->hasMany('App\Model\Home\Reviews_pic','reviews_id','id');
-    }
-
-    public function reply()
-    {
-        return $this->hasMany('App\Model\Home\Reviews_reply','rid','id');
-    }
 }

@@ -74,14 +74,15 @@
 						<tbody>
 							@foreach($details as $k=>$v)
 							<tr>
-								<td class="text-left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><img src="{{$v->pic}}"></font></font></td>
-								<td class="text-left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->prod_name}}</font></font></td>
+								<td style="display: none" class="pid">{{$v->pid}}</td>
+								<td class="text-left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="/home/product/{{$v->pid}}"><img style="width: 80px;" src="{{$v->pic}}"></a></font></font></td>
+								<td class="text-left"><font style="vertical-align: inherit;"><a href="/home/product/{{$v->pid}}"><font style="vertical-align: inherit;">{{$v->prod_name}}</font></a></font></td>
 								<td class="text-left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->quantity}}</font></font></td>
 								<td class="text-right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" class="quan">{{$v->quantity}}</font></font></td>
 								<td class="text-right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" class="pri">¥ {{$v->price}}</font></font></td>
 								<td class="text-right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" class="sum">¥ {{$v->sum}}</font></font></td>
-								<td style="white-space: nowrap;" class="text-right"> <a class="btn btn-primary" title="" data-toggle="tooltip" href="#" data-original-title="Reorder"><i class="fa fa-shopping-cart"></i></a>
-									<a class="btn btn-danger" title="" data-toggle="tooltip" href="return.html" data-original-title="Return"><i class="fa fa-reply"></i></a>
+								<td style="white-space: nowrap;" class="text-right"> <a class="btn btn-primary createcart" title="" data-toggle="tooltip" href="javascript:void(0)" data-original-title="加入购物车"><i class="fa fa-shopping-cart"></i></a>
+									<!-- <a class="btn btn-danger" title="" data-toggle="tooltip" href="return.html" data-original-title="退货"><i class="fa fa-reply"></i></a> -->
 								</td>
 							</tr>
 							@endforeach
@@ -171,7 +172,7 @@
 					</tbody>
 				</table>
 				<div class="buttons clearfix">
-					<div class="pull-right"><a class="btn btn-primary" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">继续</font></font></a>
+					<div class="pull-right"><a class="btn btn-primary" href="/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">去购物</font></font></a>
 					</div>
 				</div>
 
@@ -229,6 +230,15 @@
 			 var yunfei = parseFloat($('.yunfei').text().replace(/¥/,"").trim())
 			  var zongjia = sum+yunfei
 			 $('.zongjia').text('¥ '+zongjia)
+		})
+		$('.createcart').click(function(){
+			var pid = $(this).parents('td').siblings('.pid').text()
+			// console.log(pid)
+			$.get('/home/cart/create',{id:pid,quantity:1},function(data){
+				if(data == '1'){
+					alert('已加入购物车')
+				}
+			})
 		})
 	</script>
 @stop

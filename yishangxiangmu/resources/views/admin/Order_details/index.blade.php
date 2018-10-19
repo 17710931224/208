@@ -56,8 +56,9 @@
                 <tbody><tr style="color:#00c;font-size: 15px;">
                   <!-- <th></th> -->
                   <th style="display: none">ID</th>
+                  <th>商品图片</th>
                   <th>商品名称</th>
-                  <th>商品描述</th>
+                  <!-- <th>商品描述</th> -->
                   <th>商品价格</th>
                   <th>商品数量</th>
                   <th>商品总价</th>
@@ -67,8 +68,9 @@
                   <!-- <input type="checkbox" name='ids[]'>
                   <td></td> -->
                   <td style="display: none">{{$rs->id}}</td>
+                  <td><img style="width: 80px" src="{{$rs->pic}}"></td>
                   <td>{{$rs->prod_name}}</td>
-                  <td>{{$rs->description}}</td>
+                  <!-- <td>{{$rs->description}}</td> -->
                   <td>{{$rs->price}}</td>
                   <td>{{$rs->quantity}}</td>
                   <td>{{$rs->total}}</td>

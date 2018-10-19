@@ -45,7 +45,7 @@ class OrderController extends Controller
 	   public function save(Request $request)
 	   {	
 	   		// echo "<pre>";
-	   		$res = Cart::orderBy('id','desc')->where('uid',1)->get(['pid','prod_name','description','quantity','price']);
+	   		$res = Cart::orderBy('id','desc')->where('uid',1)->get(['pid','prod_name','description','quantity','price','pic']);
 	   		foreach ($res as $k => $v) {
 	   			$v['total'] = $v->price*$v->quantity;
 	   		}
@@ -69,27 +69,45 @@ class OrderController extends Controller
 				$ord['created_at'] = time();
 
 			// dd($ord);
-				
-			$data = Order::create($ord);	 
-
+			try {
+					$data = Order::create($ord);
+				} catch (Exception $e) {
+					
+					return back();
+				}	
+				 
 		   	$id = $data->id;
 
-		   	$order = $data->find($id);
+		   	$order = $data->find($id);	
+		   	try {
+					$der = $order->goods()->createMany($res->toArray());
+					if ($der) {
+						$cart = Cart::where('uid',1)->delete();
+						return redirect('/home/order/success');
+					}
+				} catch (Exception $e) {
+					
+					return back();
+				}
 
-		   	// dd($res->toArray());	
 
-		   	$der = $order->goods()->createMany($res->toArray());
+		   	
 		}
 
 		//历史订单浏览
 		public function history()
 		{	
-			$order  = Order::where('uid',5)->get();
-			foreach ($order as $v) {
-				$goods = $v->goods()->get()->toArray();
+			$order  = Order::where('uid',1)->get();
+			// dd($order != '[]');
+			if($order != '[]'){
+				foreach ($order as $v) {
+					$goods = $v->goods()->get()->toArray();
+				}
+				// dd($order);
+				return view('Home.Order.order_history',['order'=>$order,'goods'=>$goods]);
+			}else{
+				return view('Home.Order.order_history_null');
 			}
-			// dd($order);
-			return view('Home.Order.order_history',['order'=>$order,'goods'=>$goods]);
 		}
 
 		//订单详情
@@ -114,5 +132,11 @@ class OrderController extends Controller
 			}else{
 				return 2;
 			}
+		}
+
+		public function success()
+		{
+
+			return view('home.Order.order_success');
 		}		   	   
 }
