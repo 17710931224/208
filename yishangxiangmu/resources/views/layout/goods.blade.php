@@ -678,9 +678,7 @@
 
     <div class="main-container container">
         <ul class="breadcrumb">
-            <li><a href="/"><i class="fa fa-home"></i></a></li>
-      
-            <li><a href="search?cate_id=0&prod_name={{$cate_id}}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$cate[0]->cname}}</font></font></a></li>
+           
            
            
         </ul>

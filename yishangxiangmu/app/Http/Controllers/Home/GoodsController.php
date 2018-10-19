@@ -51,27 +51,18 @@ class GoodsController extends Controller
      	 
 
      	 $res = DB::table('es_products')->where('prod_name','like','%'.$request->input('prod_name').'%')->get();
-         
-
-         $cate = DB::table('es_categroies')->where('cname','like','%'.$request->input('prod_name').'%')->get();
-   
-         
-
-       //   $cid = DB::table('es_categroies')->where('cid','=',$request->input('cate_id'))->pluck('path');
-         
-       //   $cid_id = DB::table('es_categroies')->where('pid','=',$request->input('cate_id'))->pluck('cid');
-        $cate_id = $request->input('prod_name');
+  
+       $cate_id = $request->input('prod_name');
 
 
-     	 // $cate = DB::table('es_categroies')->where('path','=',$cid[0].$cate_id.','.$cid_id[0].',')->get();
-     	
+     	 
      	$goods = DB::table('es_products')->inRandomOrder()->take(5)->get();
         
      	 return view('home.goods.search',[
      	 	'title'=>'商品页',
      	 	'res'=>$res,
      	 	'goods'=>$goods,
-     	 	'cate'=>$cate,
+     	 	
      	 	'cate_id'=>$cate_id]);
      } 
 
