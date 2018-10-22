@@ -60,7 +60,9 @@
          #geshi img{width:100%;height:100%;}
 
          .item-title  {display:block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
-         .item-inner   {display:block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+         .item-inner   {display:block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}px
+
+         
     </style>
 
 </head>

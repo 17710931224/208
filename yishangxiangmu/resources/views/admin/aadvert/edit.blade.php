@@ -13,14 +13,14 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" action="/admin/advert/{{$data->adid}}" method='post' enctype='multipart/form-data'>
+            <form class="form-horizontal" action="/admin/aadvert/{{$data->aid}}" method='post' enctype='multipart/form-data'>
               <div class="box-body">
 
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">广告名 </font></font></label>
 
                   <div class="col-sm-8">
-                     <input type="text" id="adname" name="adname" value="{{$data->adname}}" 
+                     <input type="text" id="aname" name="aname" value="{{$data->aname}}" 
                   autocomplete="off" class="layui-input">
                   </div>
                 </div>
@@ -31,7 +31,7 @@
                   <label for="inputPassword3" class="col-sm-2 control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">URL地址 </font></font></label>
 
                   <div class="col-sm-8">
-                     <input type="text" id="adurl" name="adurl" value="{{$data->adurl}}" 
+                     <input type="text" id="aurl" name="aurl" value="{{$data->aurl}}" 
                   autocomplete="off" class="layui-input">
                   </div>
                 </div>
@@ -45,12 +45,12 @@
 
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">广告图片</font></font></label>
-                  <img src="{{$data->adpic}}" width="300px">
+                  <img src="{{$data->apic}}" width="300px">
                   <div class="col-sm-8">
                   <div class="mws-form-item">
                         <div style="position: relative;" class="fileinput-holder">
 
-                            <input type="file" id="zx_img" name="adpic"  required="" autocomplete="off">
+                            <input type="file" id="zx_img" name="apic"  required="" autocomplete="off">
                         </div>
                         
                     </div>

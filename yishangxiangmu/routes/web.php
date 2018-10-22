@@ -28,7 +28,8 @@ Route::group([],function(){
 
     Route::resource('admin/lunbo', 'Admin\LunBoController');       //轮播图
 
-    Route::resource('admin/advert','Admin\AdvertController');      //广告
+    Route::resource('admin/advert','Admin\AdvertController');      //广告块1	
+    Route::resource('admin/aadvert','Admin\AadvertController');      //广告块2
     
 });
 

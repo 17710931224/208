@@ -347,8 +347,8 @@ desired effect
                       
                           <ul class="treeview-menu">
 
-                           <li><a href="/admin/advert/create"> - 新增</a></li>
-                          <li><a href="/admin/advert"> - 管理</a></li>
+                           <li><a href="/admin/aadvert/create"> - 新增</a></li>
+                          <li><a href="/admin/aadvert"> - 管理</a></li>
                           </ul>
                    </li>
                </ul>

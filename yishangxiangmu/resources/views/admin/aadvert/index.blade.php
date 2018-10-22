@@ -18,7 +18,7 @@
     <!-- /.box-header -->
     <div class="box-body">
         <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-            <form action="/admin/advert" method='get'>
+            <form action="/admin/aadvert" method='get'>
             <div class="row">
                 <div class="col-sm-8">
                     <div class="dataTables_length" id="example1_length">
@@ -44,7 +44,7 @@
                     <div id="example1_filter" class="dataTables_filter">
                     <label>
                     图片名:
-                    <input type="text" name='adname' value='' aria-controls="DataTables_Table_2">
+                    <input type="text" name='aname' value='' aria-controls="DataTables_Table_2">
                    
                 	</label>
 
@@ -125,28 +125,28 @@
                                 <td class="sorting_1">
                                     <font style="vertical-align: inherit;">
                                         <font style="vertical-align: inherit;">
-                                            {{$v->adid}}
+                                            {{$v->aid}}
                                         </font>
                                     </font>
                                 </td>
                                 <td>
                                     <font style="vertical-align: inherit;">
                                         <font style="vertical-align: inherit;">
-                                           {{$v->adname}}
+                                           {{$v->aname}}
                                         </font>
                                     </font>
                                 </td>
                                 <td>
                                     <font style="vertical-align: inherit;">
                                         <font style="vertical-align: inherit;">
-                                           {{$v->adurl}}
+                                           {{$v->aurl}}
                                         </font>
                                     </font>
                                 </td>
                                 <td>
                                     <font style="vertical-align: inherit;">
                                         <font style="vertical-align: inherit;">
-                                            <img src="{{$v->adpic}}" style ="width:100px;height:100px">
+                                            <img src="{{$v->apic}}" style ="width:200px;height:100px">
                                         </font>
                                     </font>
                                 </td>
@@ -169,9 +169,9 @@
 
 
                                 <td class=" ">
-                            <a class='btn btn-primary' href="/admin/advert/{{$v->adid}}/edit">修改</a>
+                            <a class='btn btn-primary' href="/admin/aadvert/{{$v->aid}}/edit">修改</a>
 
-                            <form action="/admin/advert/{{$v->adid}}" method='post' style='display:inline'>
+                            <form action="/admin/aadvert/{{$v->aid}}" method='post' style='display:inline'>
                                 
                                 {{csrf_field()}}
                                 {{method_field('DELETE')}}

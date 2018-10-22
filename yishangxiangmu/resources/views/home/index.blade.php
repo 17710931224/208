@@ -376,24 +376,15 @@
             </div>
             <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 main-right">
                 
-
+              @php $adv= \DB::table('advert')->where('status','1')->get();  @endphp
                 <div class="static-cates">
                     <ul>
-                        <li>
-                            <a href="#"><img src="/homes/image/catalog/banners/cat1.jpg" alt="图片"></a>
+                       @foreach($adv as $k=>$v)
+                        <li id="pp">
+                            <a href="{{$v->adurl}}"><img src="{{$v->adpic}}" style="width:100%;height:220px;" alt="图片"></a>
                         </li>
-                        <li>
-                            <a href="#"><img src="/homes/image/catalog/banners/cat2.jpg" alt="图片"></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="/homes/image/catalog/banners/cat3.jpg" alt="图片"></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="/homes/image/catalog/banners/cat4.jpg" alt="图片"></a>
-                        </li>
-                        <li>
-                            <a href="#"><img src="/homes/image/catalog/banners/cat5.jpg" alt="图片"></a>
-                        </li>
+                        @endforeach 
+                        
                     </ul>
                 </div>
 
@@ -493,17 +484,19 @@
                       </div>
                 </div>
                 <!-- End Deals -->
-
+                @php $aadv= \DB::table('aadvert')->where('status','1')->get();  @endphp
                 <!-- Banners -->
                 <div class="banners3 banners">
+                
                     <div class="item1">
-                        <a href="#"><img src="/homes/image/catalog/banners/banner3.jpg" alt="图片"></a>
+                        <a href="{{$aadv[0]->aurl}}"><img src="{{$aadv[0]->apic}}" style="width:100%;height:257px;" alt="图片"></a>
                     </div>
+                  
                     <div class="item2">
-                        <a href="#"><img src="/homes/image/catalog/banners/banner4.jpg" alt="图片"></a>
+                        <a href="{{$aadv[1]->aurl}}"><img src="{{$aadv[1]->apic}}"  style="width:100%;height:257px;" alt="图片"></a>
                     </div>
                     <div class="item3">
-                        <a href="#"><img src="/homes/image/catalog/banners/banner5.jpg" alt="图片"></a>
+                        <a href="www.baidu.com"><img src="{{$aadv[2]->apic}}" style="width:100%;height:257px;" alt="图片"></a>
                     </div>
                 </div>
                 <!-- end Banners -->
@@ -775,10 +768,10 @@
                 <div class="banners4 banners">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <a href="#"><img src="/homes/image/catalog/banners/bn1.jpg" alt="图片"></a>
+                            <a href="{{$aadv[3]->aurl}}"><img src="{{$aadv[3]->apic}}" alt="图片"></a>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <a href="#"><img src="/homes/image/catalog/banners/bn2.jpg" alt="图片"></a>
+                            <a href="{{$aadv[4]->aurl}}"><img src="{{$aadv[4]->apic}}" alt="图片"></a>
                         </div>
                     </div>
                 </div>

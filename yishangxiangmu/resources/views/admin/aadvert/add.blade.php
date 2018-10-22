@@ -13,14 +13,14 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" action="/admin/advert/{{$data->adid}}" method='post' enctype='multipart/form-data'>
+            <form class="form-horizontal" action="/admin/aadvert" method='post' enctype='multipart/form-data'>
               <div class="box-body">
 
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">广告名 </font></font></label>
 
                   <div class="col-sm-8">
-                     <input type="text" id="adname" name="adname" value="{{$data->adname}}" 
+                     <input type="text" id="aname" name="aname" required="" 
                   autocomplete="off" class="layui-input">
                   </div>
                 </div>
@@ -31,7 +31,7 @@
                   <label for="inputPassword3" class="col-sm-2 control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">URL地址 </font></font></label>
 
                   <div class="col-sm-8">
-                     <input type="text" id="adurl" name="adurl" value="{{$data->adurl}}" 
+                     <input type="text" id="aurl" name="aurl" required="" 
                   autocomplete="off" class="layui-input">
                   </div>
                 </div>
@@ -45,14 +45,17 @@
 
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">广告图片</font></font></label>
-                  <img src="{{$data->adpic}}" width="300px">
+                  
                   <div class="col-sm-8">
                   <div class="mws-form-item">
                         <div style="position: relative;" class="fileinput-holder">
 
-                            <input type="file" id="zx_img" name="adpic"  required="" autocomplete="off">
+                            <input type="file" id="zx_img" name="apic"  required="" autocomplete="off">
                         </div>
-                        
+                       <!--  <div style="position: relative;" class="fileinput-holder">
+
+                            <input type="button" value="查看图像" onclick="readAsDataURL()" />
+                        </div> -->
                     </div>
                     <div id="result" name="result" style="display:inline"></div>
                     </div>
@@ -67,8 +70,8 @@
                   <label for="inputEmail3" class="col-sm-2 control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">状态</font></font></label>
                     <div class="col-sm-10">
                        
-                          <input type="radio" name="status" lay-skin="primary" value="1" title="启用" checked="" @if($data->status =='1') checked='checked' @endif>启用
-                      <input type="radio" name="status" lay-skin="primary" value="2" title="禁用" @if($data->status =='2') checked='checked' @endif >禁用
+                          <input type="radio" name="status" lay-skin="primary" value="1" title="启用" checked="">启用
+                      <input type="radio" name="status" lay-skin="primary" value="2" title="禁用">禁用
                         
                     </div>
                 </div>
@@ -79,9 +82,9 @@
                 <label for="L_repass" class="layui-form-label">
                     </label>
                     <button  class="btn btn-primary" lay-filter="add" lay-submit="">
-                        {{method_field('PUT')}}
+
                         {{csrf_field()}}
-                        修改广告
+                        新增图片
                 </button>
             </div>
               <!-- /.box-footer -->
@@ -126,7 +129,10 @@
                     reader.readAsDataURL(file[0]);
                   }
                 });
-      
+
+
+
+            
 
     </script>
 
