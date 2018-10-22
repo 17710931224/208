@@ -3,10 +3,9 @@
 
 @section('content')
 
-	@if(session('success'))
+	<!-- @if(session('success'))
 		<div class="external-event bg-aqua ui-draggable ui-draggable-handle" style="position: relative;">{{session('success')}}</div>
-
-	@endif
+	@endif -->
 
 
 	<div class="col-xs-12">
@@ -87,8 +86,8 @@
                   @endif
                  <!--  <td>{{$rs->review}}</td> -->
                   <td>
-                  	<a href="/admin/orders/{{$rs->id}}/edit" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
-                    <a href="/admin/details/{{$rs->id}}" class="btn btn-primary">详情</a>
+                  	<a href="/admin/orders/{{$rs->id}}/edit" class="btn btn-primary" title="编辑"><i class="fa fa-pencil"></i></a>
+                    <a href="/admin/details/{{$rs->id}}" class="btn btn-primary" title="商品详情">详情</a>
                   	@if($rs->status==1)
                   	<a href="javascript:void(0)" value="1" class="btn btn-primary slip">发货</a>
                   	@elseif($rs->status==2)

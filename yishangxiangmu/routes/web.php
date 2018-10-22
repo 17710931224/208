@@ -11,7 +11,7 @@
 |
 */
 
-
+session(['uid'=>1]);
 
 //首页
     Route::any('/', 'Home\FirstController@index');
@@ -51,12 +51,16 @@ Route::group([],function(){
 
 });
 
-
+//后台友情链接
+Route::resource('admin/link','admin\LinkController');
 	
 //后台订单
 Route::resource('admin/orders','Admin\OdersController');
 Route::any('admin/details/{id}','Admin\OrderDetailsController@show');
 Route::any('admin/order/slip','Admin\OrderDetailsController@slip');
+Route::any('/admin/evaluation','admin\EvaluationController@index');
+Route::any('/admin/evaluation/tg','admin\EvaluationController@update');
+Route::any('/admin/evaluation/wtg','admin\EvaluationController@delete');
 
 //前台购物车
 // Route::resource('home/cart','Home\CartController');
