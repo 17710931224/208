@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Model\Admin\Cate;
-
+use App\Model\Admin\Goods;
 use DB;
 
 use App\Model\Home\Reviews;
@@ -29,7 +29,7 @@ class GoodsController extends Controller
 
     public function goods($id)
     {  
-       $goodsinfos = DB::table('es_products')->where('cate_id',$id)->get(); //商品信息
+       $goodsinfos = Goods::where('cate_id',$id)->get(); //商品信息
        
        $cate_id = Cate::where('cid',$id)->pluck('pid');
        $cate = Cate::where('cid','=',$cate_id)->get();     //获取分类父级
@@ -37,7 +37,7 @@ class GoodsController extends Controller
        $cates = Cate::where('pid','=',$cate_id)->get();    //获取商品
 
 
-       $goods = DB::table('es_products')->inRandomOrder()->take(5)->get();    //左侧商品随机显示
+       $goods = Goods::inRandomOrder()->take(5)->get();    //左侧商品随机显示
        
        
 
@@ -48,21 +48,26 @@ class GoodsController extends Controller
 
      public function search(Request $request)
      {
+     	 $cate_id = $request->input('prod_name');
+      
+
+       $goods = Goods::inRandomOrder()->take(4)->get();
+     	
+
+
+       $datas = Goods::where('prod_name','like','%'.$request->input('prod_name').'%')
+       		
+            ->paginate($request->input('num', 10));
+
      	 
-
-     	 $res = DB::table('es_products')->where('prod_name','like','%'.$request->input('prod_name').'%')->get();
-  
-       $cate_id = $request->input('prod_name');
-
-
-     	 
-     	$goods = DB::table('es_products')->inRandomOrder()->take(8)->get();
+     	
         
      	 return view('home.goods.search',[
      	 	'title'=>'商品页',
-     	 	'res'=>$res,
+     	 	'request'=>$request,
      	 	'goods'=>$goods,
-     	 	
+        'datas'=>$datas,
+        
      	 	'cate_id'=>$cate_id]);
      } 
 
@@ -72,7 +77,7 @@ class GoodsController extends Controller
      {
 
         
-        $goodsinfos = DB::table('es_products')->where('prod_id','=',$id)->first();
+        $goodsinfos = Goods::where('prod_id','=',$id)->first();
 
 
         //$cgoods = DB::table('es_products')->where('cate_id','=',$id)->pluck('prod_id');
@@ -81,11 +86,11 @@ class GoodsController extends Controller
         //
         $gpics = DB::table('prod_pic')->where('cid',$goodsinfos->prod_id)->get();
 
-        $times = DB::table('es_products')->where('created_at','=','2018-10-16')->inRandomOrder()->take(4)->orderBy('price', 'asc')->get();
+        $times = Goods::where('created_at','=','2018-10-16')->inRandomOrder()->take(4)->orderBy('price', 'asc')->get();
         
 
     
-        $goods = DB::table('es_products')->inRandomOrder()->take(8)->get();
+        $goods = Goods::inRandomOrder()->take(8)->get();
 
         //评论查询
         $reviews = Reviews::orderBy('id','desc')->where('prod_id',$id)->paginate(3);
@@ -108,7 +113,7 @@ class GoodsController extends Controller
 
      public function quickview($id)
      {
-        $goodsinfos = DB::table('es_products')->where('prod_id','=',$id)->first();
+        $goodsinfos = Goods::where('prod_id','=',$id)->first();
         $gpics = DB::table('prod_pic')->where('cid',$goodsinfos->prod_id)->get();
 
      	return view('home.goods.quickview',['goodsinfos'=>$goodsinfos,'gpics'=>$gpics]);

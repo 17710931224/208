@@ -125,7 +125,7 @@
 
 <body class="res layout-subpage layout-1 banners-effect-5">
 
-    <div id="wrapper" class="wrapper-fluid">
+<div id="wrapper" class="wrapper-fluid">
     <!-- Header Container  -->
     <header id="header" class=" typeheader-1">
         
