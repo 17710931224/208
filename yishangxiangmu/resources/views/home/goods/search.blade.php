@@ -12,6 +12,7 @@
         	<!--Middle Part Start-->
         	<div id="content" class="col-md-9 col-sm-8">
         		<div class="products-category">
+                
                     <h3 class="title-category "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">饰品</font></font></h3>
         			<div class="category-desc">
         				<div class="row">
@@ -37,25 +38,29 @@
                         
                             </div>
                             <div class="short-by-show form-inline text-right col-md-7 col-sm-9 col-xs-12">
-                                <div class="form-group short-by">
+            					
+
+                                <!-- <div class="form-group short-by">
                                     <label class="control-label" for="input-sort"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">排序方式：</font></font></label>
-                                    <select id="input-sort" class="form-control" onchange="location = this.value;">
+                                    <select id="input-sort" name= "price" class="form-control" onchange="location = this.value;" >
                                         <option value="" selected="selected"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认</font></font></option>
                                         
-                                        <option value=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">价格（低&gt;高）</font></font></option>
-                                        <option value=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">价格（高&gt;低）</font></font></option>
+                                        <option value="min" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">价格（低&gt;高）</font></font></option>
+                                        <option value="max" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">价格（高&gt;低）</font></font></option>
                                         
                                     </select>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label class="control-label" for="input-limit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">显示：</font></font></label>
-                                    <select id="input-limit" class="form-control" onchange="location = this.value;">
-                                        <option value="" selected="selected"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">15</font></font></option>
-                                        <option value=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">25</font></font></option>
-                                        <option value=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">50</font></font></option>
-                                        <option value=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">75</font></font></option>
-                                        <option value=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">100</font></font></option>
-                                    </select>
+                                    <select id="input-limit" name ="num" class="form-control" >
+                                        <option value="10" @if($request->num == 10)  selected="selected"  @endif><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">10</font></font></option>
+                                        
+                                        <option value="25" @if($request->num == 25)  selected="selected"  @endif><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">25</font></font></option>
+                                        
+                                        <option value="50" @if($request->num == 50)  selected="selected"  @endif><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">50</font></font></option>
+                                        
+                                        
+                                    </select>件
                                 </div>
                             </div>
                             <!-- <div class="box-pagination col-md-3 col-sm-4 col-xs-12 text-right">
@@ -71,10 +76,10 @@
 
         			<!--changed listings-->
                     <div class="products-list row nopadding-xs so-filter-gird grid">
-            	    @foreach($res as $k=>$v)
-        				<div class="product-layout col-lg-15 col-md-4 col-sm-6 col-xs-12">
+            	    @foreach($datas as $k=>$v)
+        				<div class="product-layout col-lg-15 col-md-4 col-sm-6 col-xs-12" >
                             <div class="product-item-container">
-                                <div class="left-block left-b">
+                                <div class="left-block left-b"  >
                                     
                                     <div class="product-image-container second_img">
                                         <a href="/home/product/{{$v->prod_id}}" target="_self" title="">
@@ -116,7 +121,7 @@
                                             </div>
                                             <span class="rating-num"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（2）</font></font></span>
                                         </div>
-                                        <h4><a class='goodss' href="product.html" title="熏牛肉培根" target="_self"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->prod_name}}</font></font></a></h4>
+                                        <h4><a class='goodss' id="goods" href="product.html" title="{{$v->prod_name}}" target="_self"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->prod_name}}</font></font></a></h4>
                                         
                                     </div>
                                     <p class="price">
@@ -154,7 +159,7 @@
         			<div class="product-filter product-filter-bottom filters-panel">
                         <div class="row">
                             <div class="col-sm-6 text-left"></div>
-                            <div class="col-sm-6 text-right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">显示第1至15个结果（共1页）</font></font></div>
+                            <div class="col-sm-6 text-right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$datas->appends($request->all())->links()}}</font></font></div>
                         </div>
                     </div>
         			<!-- //end Filters -->
@@ -185,7 +190,44 @@
             }
         })
       })
+       
   </script>
+
+  <script type="text/javascript">
+  	  $("#input-limit").change(function(){
+    		// console.log($(this).val());
+    		var page = $(this).val();
+    		var ur = window.location.href;
+    		// console.log(ur);
+    		return location= ur+"&num="+page;
+ 
+    		
+		 });
+
+
+
+   //          function sortNumber(a,b){
+			// 	  return a - b;
+			// 	}
+			// function sortArr(){
+			//   var arr =[];
+			//   $("li").each(function(){
+			//     var ele = $(this).text();
+			//     arr.push(ele);
+			//   })
+			//   arr = arr.sort(sortNumber);
+			//   alert(arr);
+			//   var list=""
+			//   for (var i = 0; i < arr.length; i++) {
+			//     list +="<li>"+arr[i]+"</li>";
+			//   };
+			//   $("ul").empty().append(list);
+
+			// }
+
+
+
+  </script>>
     
 
 @stop

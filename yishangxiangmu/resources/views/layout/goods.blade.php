@@ -77,6 +77,11 @@
 				  -webkit-line-clamp: 2;
 				  line-clamp: 2;
 				  -webkit-box-orient: vertical;}
+
+        #goods{
+            width:100%;
+            height:27px;
+        }
     </style>
 
 </head>
@@ -746,7 +751,7 @@
                                                 <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
                                             </div>
                                             <div class="content_price price">
-                                                <span class="price-new product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¥ {{$v->price}} </font></font></span>&nbsp;&nbsp;
+                                                <span class="price-new product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¥ {{$v->price}}</font></font></span>&nbsp;&nbsp;
 
                                                 
 

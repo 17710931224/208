@@ -96,6 +96,7 @@
       function readAsDataURL(){ 
         //检验是否为图像文件 
         var file = document.getElementById("file").files[0]; 
+       
         if(!/image\/\w+/.test(file.type)){ 
             alert("看清楚，这个需要图片！"); 
             return false; 

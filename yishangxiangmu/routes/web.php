@@ -26,7 +26,9 @@ Route::group([],function(){
 
     Route::resource('admin/goods', 'Admin\GoodsController');       //后台商品
 
-    Route::resource('admin/lunbo', 'Admin\LunBoController');       //后台商品
+    Route::resource('admin/lunbo', 'Admin\LunBoController');       //轮播图
+
+    Route::resource('admin/advert','Admin\AdvertController');      //广告
     
 });
 

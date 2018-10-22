@@ -29,8 +29,7 @@ class LunBoController extends Controller
                 
                 
             })
-            ->paginate($request->input('num', 10));
-
+            ->paginate($request->input('num', 3));
         
         $zong = count($data);
         

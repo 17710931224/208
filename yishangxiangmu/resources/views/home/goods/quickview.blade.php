@@ -56,7 +56,7 @@
 
  <body class="res layout-subpage">
 
-     <div id="wrapper" class="wrapper-full ">
+<div id="wrapper" class="wrapper-full ">
 	<!-- Main Container  -->
 	 <div class="main-container container">
 		
@@ -76,8 +76,8 @@
                             
                             <div id="thumb-slider" class="yt-content-slider full_slider owl-drag" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="10" data-items_column00="4" data-items_column0="4" data-items_column1="3" data-items_column2="4"  data-items_column3="1" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
                             @foreach($gpics as $k => $v)
-                                <a data-index="0" class="img thumbnail " data-image="{{$v->pic}}" width="350" title="Chicken swinesha">
-                                    <img src="{{$v->pic}}" title="Chicken swinesha" alt="Chicken swinesha">
+                                <a data-index="0" class="img thumbnail " id="picpic" data-image="{{$v->pic}}" width="350"  title="Chicken swinesha">
+                                    <img src="{{$v->pic}}" title="Chicken swinesha"  alt="Chicken swinesha">
                                 </a>
 
 
@@ -108,7 +108,7 @@
 
                             <div class="product-label form-group">
                                 <div class="product_page_price price" itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
-                                    <span class="price-new" itemprop="price">¥{{$goodsinfos->price}}</span>
+                                    <span class="price-new" itemprop="price">¥{{$goodsinfos->price}}.00</span>
                                     
                                 </div>
                                 <div class="stock"><span>可用:</span> <span class="status-stock">库存</span></div>
@@ -125,51 +125,57 @@
                             </div>
 
 
+
+
                             <div id="product">
                                 <h4>可用选项</h4>
                                 
+                                
+                                
+                                
                                 <div class="image_option_type form-group required">
-                                    <label class="control-label">颜色分类</label>
-                                    <ul class="product-options clearfix"id="input-option231">
-                                    @php
-                                        $goodscolor = explode(",",$goodsinfos->color);
+                                <label class="control-label">颜色分类</label><br>
+                                <div class="btn-group" data-toggle="buttons">
+                                @php
+                                    $goodscolor = explode(",",$goodsinfos->color);
                                        
-                                    @endphp
-                                    @foreach($goodscolor as $k=>$v)
+                                @endphp
 
-                                        <li  class="btn-group" >
-                                           
-                                            <input type="radio" id="color" name="color"  class="@if($k == 0) selected color @endif sku-line" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                            {{$v}}
-                                          </font></font>
-                                          
-                                        </li>
-                                        
-                                       
-                                    @endforeach
-                                    </ul>
-
-
+                                @foreach($goodscolor as $k=>$v)
+                                 
+                                 <label class="btn btn-default @if($k == 0) active @endif">
+                                    <input type="radio" name="options" id="option1" autocomplete="off"
+                                    > {{$v}}
+                                  </label>
+                                @endforeach 
                                 </div>
+                                </div>
+
+                                <div class="image_option_type form-group required">
+                                <label class="control-label">尺寸样式</label><br>
+                                <div class="btn-group" data-toggle="buttons">
+                                @php
+                                    $goodssize = explode(",",$goodsinfos->size);
+                                       
+                                @endphp
+                                @foreach($goodssize as $k=>$v)
+                                 
+                                  <label class="btn btn-default @if($k == 0) active @endif">
+                                    <input type="radio" name="options" id="option1" autocomplete="off"
+                                   > {{$v}}
+                                  </label>
+                                @endforeach 
+                                </div>
+                               
 
                                 
-                                <div class="box-checkbox form-group required">
-                                    <label class="control-label">尺寸</label>
-                                    <ul id="input-option232">
-                                    @php
-                                        $goodscolor = explode(",",$goodsinfos->size);
-                                    @endphp
-                                    @foreach($goodscolor as $k=>$v)
-                                        <li id="size" class="btn-group">
-                                           
-                                            <input type="radio" name="size"  value="1"  @if($k == 0) checked size @endif><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                            {{$v}}
-                                          </font></font>
-                                          
-                                        </li>
-                                    @endforeach
-                                    </ul>
-                                </div>
+
+
+
+
+
+
+                        </div><br> 
 
                                 <div class="form-group box-info-product">
                                     <div class="option quantity">
@@ -183,8 +189,8 @@
                                         </div>
                                     </div>
                                     <div class="cart">
-                                        <input type="text" name="pid" value="{{$goodsinfos->prod_id}}" style="display: none">
-                                        <input type="button" id="aaa" data-toggle="tooltip" title="" value="加入购物车" data-loading-text="Loading..." id="button-cart" class="btn btn-mega btn-lg"  data-original-title="加入购物车">
+                                        <input type="text" name="" class="pid" value="{{$goodsinfos->prod_id}}" style="display: none">
+                                        <input type="button" id="aaa" data-toggle="tooltip" title="" value="加入购物车" data-loading-text="Loading..." id="button-cart" class="btn btn-mega btn-lg" data-original-title="加入购物车">
                                     </div>
                                     <div class="add-to-links wish_comp">
                                         <ul class="blank list-inline">
@@ -193,11 +199,7 @@
                                                 onclick="wishlist.add('50');" data-original-title="Add to Wish List"><i class="fa fa-heart"></i>
                                                 </a>
                                             </li>
-                                            <li class="compare">
-                                                <a class="icon" data-toggle="tooltip" title=""
-                                                onclick="compare.add('50');" data-original-title="Compare this Product"><i class="fa fa-exchange"></i>
-                                                </a>
-                                            </li>
+                                            
                                         </ul>
                                     </div>
 

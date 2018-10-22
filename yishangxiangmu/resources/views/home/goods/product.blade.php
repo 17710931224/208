@@ -51,7 +51,27 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700' rel='stylesheet' type='text/css'>     
     <style type="text/css">
          body{font-family:'Poppins', sans-serif;}
+        #picpic{
+            width:106px;
+            height: 106px;
+        }
+        .item-title{ text-overflow: -o-ellipsis-lastline;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 2;
+                  line-clamp: 2;
+                  -webkit-box-orient: vertical;}
 
+        #yangshi{ text-overflow: -o-ellipsis-lastline;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 2;
+                  line-clamp: 2;
+                  -webkit-box-orient: vertical;}
+
+        
          
     </style>
 
@@ -105,7 +125,7 @@
 
 <body class="res layout-subpage layout-1 banners-effect-5">
 
-    <div id="wrapper" class="wrapper-fluid">
+<div id="wrapper" class="wrapper-fluid">
     <!-- Header Container  -->
     <header id="header" class=" typeheader-1">
         
@@ -187,7 +207,7 @@
                              <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
                                 <form method="GET" action="/search">
                                     <div id="search0" class="search input-group form-group">
-                                        <div class="select_category filter_type  icon-select hidden-sm hidden-xs">
+                                        <div class="select_category filter_type hidden-sm hidden-xs">
                                             <select class="no-border" name="cate_id">
                                                 <option value="0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所有类别</font></font></option>
                                                 
@@ -370,7 +390,7 @@
                                                        @foreach($data as $k=>$v)
                                                        <li class="item-vertical  with-sub-menu hover">
                                                             <p class="close-menu"></p>
-                                                            <a href="#" class="clearfix">
+                                                            <a href="/search?cate_id=0&prod_name=@php echo substr("{$v->cname}",0,strpos("{$v->cname}", '/')); @endphp"" class="clearfix">
                                                                 <img src="/Homes/image/catalog/menu/icons/ico10.png" alt="图标">
                                                                 <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->cname}}</font></font></span>
                                                                 <b class="fa-angle-right"></b>
@@ -698,9 +718,7 @@
     <!-- Main Container  -->
     <div class="main-container container">
         <ul class="breadcrumb">
-            <li><a href="#"><i class="fa fa-home"></i></a></li>
-            <li><a href="#">Smartphone & Tablets</a></li>
-            <li><a href="#">Chicken swinesha</a></li>
+            
             
         </ul>
         
@@ -714,7 +732,7 @@
                         <div class="box-category">
                             <ul id="cat_accordion" class="list-group">
                                 @foreach($data as $k=>$v)
-                                <li class="hadchild cutom-parent-li"><a href="#" class="cutom-parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->cname}}</font></font><span class="dcjq-icon"></span></a>   <span class="button-view  fa fa-plus-square-o"></span>
+                                <li class="hadchild cutom-parent-li"><a href="/search?cate_id=0&prod_name=@php echo substr("{$v->cname}",0,strpos("{$v->cname}", '/')); @endphp" class="cutom-parent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$v->cname}}</font></font><span class="dcjq-icon"></span></a>   <span class="button-view  fa fa-plus-square-o"></span>
                                  @if($v->sub)
                                     <ul style="display: none;">
                                      @foreach($v->sub as $kk=>$vv)
@@ -743,7 +761,7 @@
                             <!-- Begin extraslider-inner -->
                             <div class=" extraslider-inner">
                                 <div class="item ">
-                                    @foreach($goods as $k=>$v)
+                                    @foreach($times as $k=>$v)
                                     <div class="product-layout item-inner style1 ">
                                         <div class="item-image">
                                             <div class="item-img-info">
@@ -812,7 +830,7 @@
                             
                             <div id="thumb-slider" class="yt-content-slider full_slider owl-drag" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="10" data-items_column00="4" data-items_column0="4" data-items_column1="3" data-items_column2="4"  data-items_column3="1" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
                             @foreach($gpics as $k => $v)
-                                <a data-index="0" class="img thumbnail " data-image="{{$v->pic}}" width="350"  title="Chicken swinesha">
+                                <a data-index="0" class="img thumbnail " id="picpic" data-image="{{$v->pic}}" width="350"  title="Chicken swinesha">
                                     <img src="{{$v->pic}}" title="Chicken swinesha"  alt="Chicken swinesha">
                                 </a>
 
@@ -831,11 +849,11 @@
                             <div class="box-review form-group">
                                 <div class="ratings">
                                     <div class="rating-box">
-                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i></span>
                                     </div>
                                 </div>
 
@@ -862,51 +880,57 @@
                             </div>
 
 
+
+
                             <div id="product">
                                 <h4>可用选项</h4>
                                 
+                                
+                                
+                                
                                 <div class="image_option_type form-group required">
-                                    <label class="control-label">颜色分类</label>
-                                    <ul class="product-options clearfix"id="input-option231">
-                                    @php
-                                        $goodscolor = explode(",",$goodsinfos->color);
+                                <label class="control-label">颜色分类</label><br>
+                                <div class="btn-group" data-toggle="buttons">
+                                @php
+                                    $goodscolor = explode(",",$goodsinfos->color);
                                        
-                                    @endphp
-                                    @foreach($goodscolor as $k=>$v)
+                                @endphp
 
-                                        <li  class="btn-group" >
-                                           
-                                            <input type="radio" id="color" name="color"  class="@if($k == 0) selected color @endif sku-line" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                            {{$v}}
-                                          </font></font>
-                                          
-                                        </li>
-                                        
-                                       
-                                    @endforeach
-                                    </ul>
-
-
+                                @foreach($goodscolor as $k=>$v)
+                                 
+                                 <label class="btn btn-default @if($k == 0) active @endif">
+                                    <input type="radio" name="options" id="option1" autocomplete="off"
+                                    > {{$v}}
+                                  </label>
+                                @endforeach 
                                 </div>
+                                </div>
+
+                                <div class="image_option_type form-group required">
+                                <label class="control-label">尺寸样式</label><br>
+                                <div class="btn-group" data-toggle="buttons">
+                                @php
+                                    $goodssize = explode(",",$goodsinfos->size);
+                                       
+                                @endphp
+                                @foreach($goodssize as $k=>$v)
+                                 
+                                  <label class="btn btn-default @if($k == 0) active @endif">
+                                    <input type="radio" name="options" id="option1" autocomplete="off"
+                                   > {{$v}}
+                                  </label>
+                                @endforeach 
+                                </div>
+                               
 
                                 
-                                <div class="box-checkbox form-group required">
-                                    <label class="control-label">尺寸</label>
-                                    <ul id="input-option232">
-                                    @php
-                                        $goodscolor = explode(",",$goodsinfos->size);
-                                    @endphp
-                                    @foreach($goodscolor as $k=>$v)
-                                        <li id="size" class="btn-group">
-                                           
-                                            <input type="radio" name="size"  value="1"  @if($k == 0) checked size @endif><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                            {{$v}}
-                                          </font></font>
-                                          
-                                        </li>
-                                    @endforeach
-                                    </ul>
-                                </div>
+
+
+
+
+
+
+                        </div><br> 
 
                                 <div class="form-group box-info-product">
                                     <div class="option quantity">
@@ -930,11 +954,7 @@
                                                 onclick="wishlist.add('50');" data-original-title="Add to Wish List"><i class="fa fa-heart"></i>
                                                 </a>
                                             </li>
-                                            <li class="compare">
-                                                <a class="icon" data-toggle="tooltip" title=""
-                                                onclick="compare.add('50');" data-original-title="Compare this Product"><i class="fa fa-exchange"></i>
-                                                </a>
-                                            </li>
+                                            
                                         </ul>
                                     </div>
 
@@ -957,8 +977,7 @@
                             <li class="active"><a data-toggle="tab" href="#tab-1">商品描述</a></li>
                             <li class="item_nonactive"><a data-toggle="tab" href="#tab-reviews" onclick="$('#tab-review').css('display','none')">商品评论 ({{$count}})</a></li>
                             <li class="item_nonactive"><a data-toggle="tab" href="#tab-review" style="display: none">书写评论 (1)</a></li>
-                            <li class="item_nonactive"><a data-toggle="tab" href="#tab-4">Tags</a></li>
-                            <li class="item_nonactive"><a data-toggle="tab" href="#tab-5">Custom Tab</a></li>
+                            
                         </ul>
                         <div class="tab-content col-lg-10 col-sm-9 col-xs-12">
                             <div id="tab-1" class="tab-pane fade active in">
@@ -1237,8 +1256,8 @@
                                                     <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
                                                 </div>
                                                 <span class="rating-num">( 2 )</span>
-                                            </div>
-                                            <h4><a href="product.html" title="Pastrami bacon" target="_self">{{$v->prod_name}}</a></h4>
+                                            </div >
+                                            <h4><a href="product.html" id="yangshi" title="Pastrami bacon" target="_self">{{$v->prod_name}}</a></h4>
                                             
                                         </div>
                                         <p class="price">

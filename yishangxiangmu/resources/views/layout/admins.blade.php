@@ -310,7 +310,59 @@ desired effect
             <li><a href="/admin/lunbo"> - 管理</a></li>
           </ul>
        </li>
+<<<<<<< HEAD
 	    <li class="treeview">
+=======
+       <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>广告模组</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+
+          </a>
+
+                <ul class="treeview-menu">
+                   <li class="treeview">
+                      <a href="#"></i> &nbsp;<span>广告1</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                          </span>
+
+                      </a>
+                      
+                       
+                      
+                          <ul class="treeview-menu">
+
+                           <li><a href="/admin/advert/create"> - 新增</a></li>
+                          <li><a href="/admin/advert"> - 管理</a></li>
+                          </ul>
+                   </li>
+
+                   <li class="treeview">
+                      <a href="#"></i> &nbsp;<span>广告2</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                          </span>
+
+                      </a>
+                      
+                       
+                      
+                          <ul class="treeview-menu">
+
+                           <li><a href="/admin/advert/create"> - 新增</a></li>
+                          <li><a href="/admin/advert"> - 管理</a></li>
+                          </ul>
+                   </li>
+               </ul>
+
+
+
+       </li>
+
+	   <li class="treeview">
+>>>>>>> d3b75c4f98806b7850ca4afa78f5ba553da34c16
           <a href="#"><i class="fa fa-link"></i> <span>订单模组</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
