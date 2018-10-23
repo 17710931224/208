@@ -92,15 +92,16 @@ class ShopCartController extends Controller
     public function update(Request $request)
     {
         //
-       $product = DB::table('es_products')->where('prod_id',$request->id)->value('availability');
+      
         $res = $request;
         $shu = Cart::where('id',$request->id)->first();
+         $product = DB::table('es_products')->where('prod_id',$shu->pid)->value('availability');
         // return $shu;
         // echo $res->quantity;
         if($res->quantity < 1){
         	$sul = Cart::where('id',$res->id)->delete();
             $ucount = Cart::where('uid',session('uid'))->count();
-        	if($sul) return response()->json(['ucount'=>$ucount,'code'=>1]);;
+        	if($sul) return response()->json(['ucount'=>$ucount,'code'=>1]);
         }
         if ($res->quantity == $shu->quantity) {
         	// $shu->sum = round($shu->price*$shu->quantity,3);
@@ -110,9 +111,11 @@ class ShopCartController extends Controller
 
         if($res->quantity > $product){
 
-             $sl = Cart::where('id',$res->id)->update(['quantity'=>$product]);
+
+             $sll = Cart::where('id',$res->id)->update(['quantity'=>$product]);
             
-            return response()->json(['count'=>$product,'code'=>2]);
+             return response()->json(['count'=>$product,'code'=>2]);
+            // echo 1111;
              
         }
 

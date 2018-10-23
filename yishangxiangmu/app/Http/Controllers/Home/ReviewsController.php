@@ -14,7 +14,13 @@ class ReviewsController extends Controller
     {
     	
         try{
-        	$res = Reviews::create(['user_id'=>session('uid'),'prod_id'=>$request->prod_id,'content'=>$request->content,'star'=>$request->star,'create_at'=>time()]);
+        	$res = Reviews::create([
+                'user_id'=>session('uid'),
+                'prod_id'=>$request->prod_id,
+                'content'=>$request->content,
+                'star'=>$request->star,
+                'create_at'=>time()
+            ]);
         }catch(\Excepition $e){
             return back();
         }
@@ -47,13 +53,13 @@ class ReviewsController extends Controller
 
             try{
                $cds = $reviews->goodspic()->createMany($gm); 
-               return redirect("home/product/$request->prod_id");
+               return redirect("home/product/$request->prod_id")->with('success','评论审核中');
             }catch(\Excepition $e){
                 return back();
             }
 
         }else{
-           return redirect("home/product/$request->prod_id");  
+           return redirect("home/product/$request->prod_id")->with('success','评论审核中');  
         }
     }
 

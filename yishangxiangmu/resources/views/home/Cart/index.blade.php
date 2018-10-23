@@ -221,6 +221,7 @@
 
 							$('.summ').text('¥ '+ss.toFixed(2));
 						})
+						console.log(data)
 				}else{
 					// console.log(parseFloat(data.price*data.quantity,2));
 					// up.parents('td').siblings().find('.sum').text('¥ '+data.sum)

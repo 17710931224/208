@@ -105,7 +105,7 @@
 										@endforeach
 									</div>
 								</div>
-								<div class="col-sm-6  checkout-payment-methods">
+								<div class="col-sm-6  checkout-payment-methods" style="display: none">
 									<div class="panel-heading">
 									  <h4 class="panel-title"><i class="fa fa-credit-card"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 付款方法</font></font></h4>
 									</div>

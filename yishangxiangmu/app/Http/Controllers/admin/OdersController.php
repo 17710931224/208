@@ -17,7 +17,7 @@ class OdersController extends Controller
     public function index(Request $request)
     {
         //
-        $res = Orders::orderBy('id','asc')
+        $res = Orders::orderBy('id','desc')
         ->where(function($query) use($request){
         //检测关键字
         $uname = $request->input('uname');
