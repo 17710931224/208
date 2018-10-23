@@ -272,7 +272,7 @@
 
                         <ul class="wishlist-comp hidden-md hidden-sm hidden-xs">
                            
-                            <li class="wishlist hidden-xs"><a href="#" id="wishlist-total" class="top-link-wishlist" title="愿望清单（0） "><i class="fa fa-heart"></i></a>
+                            <li class="wishlist hidden-xs"><a href="/home/wishlists/index" id="wishlist-total" class="top-link-wishlist" title="愿望清单（0） "><i class="fa fa-heart"></i></a>
                             </li>
                         </ul>
 
@@ -919,7 +919,8 @@
 
 <script type="text/javascript" src="/homes/js/themejs/toppanel.js"></script>
 <script type="text/javascript" src="/homes/js/themejs/so_megamenu.js"></script>
-<script type="text/javascript" src="/homes/js/themejs/addtocart.js"></script></body>
+<script type="text/javascript" src="/homes/js/themejs/addtocart.js"></script>
+</body>
 @section('js')
 
 

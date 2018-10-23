@@ -41,5 +41,5 @@ class Goods extends Model
         return $this->hasOne('App\Model\Admin\cate','cid','cate_cid');
     }
     
-    
+
 }

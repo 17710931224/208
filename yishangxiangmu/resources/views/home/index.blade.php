@@ -449,10 +449,11 @@
                                             </div>
                                             <div class="right-block">
                                                 <div class="button-group so-quickview cartinfo--left">
-                                                    <button type="button" class="addToCart" title="加入购物车" onclick="cart.add('60 ');">
+                                                    <input type="text" name="pid" value="{{$v->prod_id}}" style="display: none">
+                                                    <button type="button" class="addToCart" title="加入购物车" >
                                                         <span>加入购物车 </span>   
                                                     </button>
-                                                    <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart-o"></i><span>Add to Wish List</span>
+                                                    <button type="button" class="wishlist btn-button" title="加入愿望清单" ><i class="fa fa-heart-o"></i><span>Add to Wish List</span>
                                                     </button>
                                                     
                                                     
@@ -549,10 +550,11 @@
                                                 </div>
                                                 <div class="right-block">
                                                     <div class="button-group so-quickview cartinfo--left">
-                                                        <button type="button" class="addToCart" title="加入购物车" onclick="cart.add('60 ');">
+                                                        <input type="text" name="pid" value="{{$v->prod_id}}" style="display: none">
+                                                        <button type="button" class="addToCart" title="加入购物车">
                                                             <span>加入购物车 </span>   
                                                         </button>
-                                                        <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart-o"></i><span>Add to Wish List</span>
+                                                        <button type="button" class="wishlist btn-button" title="加入愿望清单" ><i class="fa fa-heart-o"></i><span>Add to Wish List</span>
                                                         </button>
                                                         
                                                         
@@ -642,7 +644,7 @@
 		                                            <button type="button" class="addToCart" title="加入购物车">
 		                                                <span>加入购物车 </span>   
 		                                            </button>
-		                                            <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart-o"></i><span>收藏</span>
+		                                            <button type="button" class="wishlist btn-button" title="加入愿望清单" ><i class="fa fa-heart-o"></i><span>收藏</span>
 		                                            </button>
 		                                         
 		                                            
@@ -733,7 +735,7 @@
 		                                            <button type="button" class="addToCart" title="加入购物车">
 		                                                <span>加入购物车 </span>   
 		                                            </button>
-		                                            <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart-o"></i><span>收藏</span>
+		                                            <button type="button" class="wishlist btn-button" title="加入愿望清单" ><i class="fa fa-heart-o"></i><span>收藏</span>
 		                                            </button>
 		                                         
 		                                            
@@ -829,7 +831,7 @@
 		                                            <button type="button" class="addToCart" title="加入购物车">
 		                                                <span>加入购物车 </span>   
 		                                            </button>
-		                                            <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart-o"></i><span>收藏</span>
+		                                            <button type="button" class="wishlist btn-button" title="加入愿望清单" ><i class="fa fa-heart-o"></i><span>收藏</span>
 		                                            </button>
 		                                         
 		                                            
@@ -901,7 +903,30 @@
 
 
 @section('js')
+<script type="text/javascript">
+    $('.addToCart').click(function(){
+            var pid = $(this).prev().val()
+            // var quantity = $('input[name=quantity]').val()
+            // console.log(pid,quantity)
+            $.get('/home/cart/create',{id:pid,quantity:1},function(data){
+                if(data == '1'){
+                    alert('已加入购物车');
+                }
+            })
 
+        })
+
+    //加入愿望清单
+    $('.wishlist').click(function(){
+        var pid = $(this).siblings('input[name=pid]').val()
+        // console.log(pid);
+        $.get('/home/wishlists/create',{pid:pid},function(data){
+            if(data == "1"){
+                alert('已加入愿望清单')
+            }
+        })
+    })
+</script>
 
 
 

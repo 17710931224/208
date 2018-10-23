@@ -310,9 +310,7 @@ desired effect
             <li><a href="/admin/lunbo"> - 管理</a></li>
           </ul>
        </li>
-<<<<<<< HEAD
 	    <li class="treeview">
-=======
        <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>广告模组</span>
             <span class="pull-right-container">
@@ -362,7 +360,6 @@ desired effect
        </li>
 
 	   <li class="treeview">
->>>>>>> d3b75c4f98806b7850ca4afa78f5ba553da34c16
           <a href="#"><i class="fa fa-link"></i> <span>订单模组</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>

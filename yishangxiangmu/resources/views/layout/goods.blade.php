@@ -296,12 +296,10 @@
                         <ul class="wishlist-comp hidden-md hidden-sm hidden-xs">
                             
                             </li>
-                            <li class="wishlist hidden-xs"><a href="#" id="wishlist-total" class="top-link-wishlist" title="愿望清单（0） "><i class="fa fa-heart"></i></a>
+                            <li class="wishlist hidden-xs"><a href="/home/wishlists/index" id="wishlist-total" class="top-link-wishlist" title="愿望清单（0） "><i class="fa fa-heart"></i></a>
                             </li>
                         </ul>
 
-                                            
-                        
                     </div>
                     
                 </div>

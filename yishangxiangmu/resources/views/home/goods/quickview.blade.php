@@ -189,14 +189,14 @@
                                         </div>
                                     </div>
                                     <div class="cart">
-                                        <input type="text" name="" class="pid" value="{{$goodsinfos->prod_id}}" style="display: none">
+                                        <input type="text" name="pid" class="" value="{{$goodsinfos->prod_id}}" style="display: none">
                                         <input type="button" id="aaa" data-toggle="tooltip" title="" value="加入购物车" data-loading-text="Loading..." id="button-cart" class="btn btn-mega btn-lg" data-original-title="加入购物车">
                                     </div>
                                     <div class="add-to-links wish_comp">
                                         <ul class="blank list-inline">
                                             <li class="wishlist">
-                                                <a class="icon" data-toggle="tooltip" title=""
-                                                onclick="wishlist.add('50');" data-original-title="Add to Wish List"><i class="fa fa-heart"></i>
+                                                <a class="iconn" data-toggle="tooltip" title="加入愿望清单"
+                                                 data-original-title="Add to Wish List"><i class="fa fa-heart"></i>
                                                 </a>
                                             </li>
                                             
@@ -296,6 +296,15 @@
             })
 
         })
+    $('.iconn').click(function(){
+        var pid = $(this).parents('.wish_comp').siblings('.cart').find('input[name=pid]').val()
+        // console.log(pid)
+        $.get('/home/wishlists/create',{pid:pid},function(data){
+            if(data == "1"){
+                alert('已加入愿望清单')
+            }
+        })
+    })
 </script>
 
 </body>
