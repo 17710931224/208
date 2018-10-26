@@ -44,7 +44,11 @@
                     <div id="example1_filter" class="dataTables_filter">
                     <label>
                     图片名:
+
                     <input type="text" name='adname' value='' aria-controls="DataTables_Table_2">
+
+                    
+
                    
                 	</label>
 
@@ -146,7 +150,11 @@
                                 <td>
                                     <font style="vertical-align: inherit;">
                                         <font style="vertical-align: inherit;">
+
                                             <img src="{{$v->adpic}}" style ="width:100px;height:100px">
+
+                                           
+
                                         </font>
                                     </font>
                                 </td>

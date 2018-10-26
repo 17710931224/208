@@ -1012,7 +1012,7 @@
     <script type="text/javascript" src="/homes/js/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="/homes/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/homes/js/owl-carousel/owl.carousel.js"></script>
-<script type="text/javascript" src="/homes/js/slick-slider/slick.js"></script>
+    <script type="text/javascript" src="/homes/js/slick-slider/slick.js"></script>
 	<script type="text/javascript" src="/homes/js/themejs/libs.js"></script>
 	<script type="text/javascript" src="/homes/js/unveil/jquery.unveil.js"></script>
 	<script type="text/javascript" src="/homes/js/countdown/jquery.countdown.min.js"></script>

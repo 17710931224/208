@@ -20,7 +20,7 @@ class OrderController extends Controller
 	   {	
 	   		$tran = DB::table('es_transport')->get();
 	   		// dd($tran);
-	   		$res = Cart::orderBy('id','desc')->where('uid',1)->get();
+	   		$res = Cart::orderBy('id','desc')->where('uid',session('uid'))->get();
 	   		$summ = null;
 	        foreach ($res as $k => $v) {
 	            $v->sum = ($v->price*$v->quantity);
@@ -45,7 +45,7 @@ class OrderController extends Controller
 	   public function save(Request $request)
 	   {	
 	   		// echo "<pre>";
-	   		$res = Cart::orderBy('id','desc')->where('uid',1)->get(['pid','prod_name','description','quantity','price','pic']);
+	   		$res = Cart::orderBy('id','desc')->where('uid',session('uid'))->get(['pid','prod_name','description','quantity','price','pic']);
 	   		foreach ($res as $k => $v) {
 	   			$v['total'] = $v->price*$v->quantity;
 	   		}
@@ -82,7 +82,7 @@ class OrderController extends Controller
 		   	try {
 					$der = $order->goods()->createMany($res->toArray());
 					if ($der) {
-						$cart = Cart::where('uid',1)->delete();
+						$cart = Cart::where('uid',session('uid'))->delete();
 						return redirect('/home/order/success');
 					}
 				} catch (Exception $e) {
@@ -97,7 +97,7 @@ class OrderController extends Controller
 		//历史订单浏览
 		public function history()
 		{	
-			$order  = Order::where('uid',1)->get();
+			$order  = Order::where('uid',session('uid'))->get();
 			// dd($order != '[]');
 			if($order != '[]'){
 				foreach ($order as $v) {

@@ -154,14 +154,10 @@
                                 <form method="GET" action="/search">
                                     <div id="search0" class="search input-group form-group">
                                         <div class="select_category filter_type   hidden-sm hidden-xs">
-                                            <select class="no-border" name="cate_id" >
-                                                <option value="0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所有类别</font></font></option>
-                                                
-                                                
-                                                
-                                            </select>
+                                        <select class="no-border" name="cate_id" >
+                                        <option value="0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所有类别</font></font></option>          
+                                        </select>
                                         </div>
-
                                         <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="在这里输入关键字" name="prod_name">
                                 
                                         <button type="submit" class="button-search btn btn-primary" ><i class="fa fa-search"></i></button>

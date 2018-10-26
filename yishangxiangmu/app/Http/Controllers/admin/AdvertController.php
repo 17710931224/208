@@ -27,7 +27,7 @@ class AdvertController extends Controller
                 
                 
             })
-            ->paginate($request->input('num', 3));
+            ->paginate($request->input('num', 10));
         return view ('admin.advert.index',['title'=>'广告','data'=>$data,'request'=>$request]);
     }
 

@@ -863,7 +863,7 @@
 
                             <div class="product-label form-group">
                                 <div class="product_page_price price" itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
-                                    <span class="price-new" itemprop="price">¥{{$goodsinfos->price}}</span>
+                                    <span class="price-new" itemprop="price"><h2>¥{{$goodsinfos->price}}</h2></span>
                                     
                                 </div>
                                 <div class="stock"><span>可用:</span> <span class="status-stock">库存</span></div>

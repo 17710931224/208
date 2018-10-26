@@ -20,7 +20,11 @@
                   <label for="inputPassword3" class="col-sm-2 control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">广告名 </font></font></label>
 
                   <div class="col-sm-8">
+<<<<<<< HEAD
                      <input type="text" id="adname" name="adname" value="{{$data->adname}}" 
+=======
+                     <input type="text" id="adname" name="adname" required="{{$data->adname}}" 
+>>>>>>> 22ca9de440abfff57ea4215192c67b0997d6bea1
                   autocomplete="off" class="layui-input">
                   </div>
                 </div>
@@ -31,7 +35,11 @@
                   <label for="inputPassword3" class="col-sm-2 control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">URL地址 </font></font></label>
 
                   <div class="col-sm-8">
+<<<<<<< HEAD
                      <input type="text" id="adurl" name="adurl" value="{{$data->adurl}}" 
+=======
+                     <input type="text" id="adurl" name="adurl" required="{{$data->adurl}}" 
+>>>>>>> 22ca9de440abfff57ea4215192c67b0997d6bea1
                   autocomplete="off" class="layui-input">
                   </div>
                 </div>

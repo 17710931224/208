@@ -296,6 +296,7 @@ desired effect
           <ul class="treeview-menu">
             <li><a href="/admin/goods/create"> - 新增</a></li>
             <li><a href="/admin/goods"> - 管理</a></li>
+            <li><a href="/admin/evaluation"> - 评论评测</a></li>
           </ul>
        </li>
        <li class="treeview">
@@ -309,6 +310,9 @@ desired effect
             <li><a href="/admin/lunbo"> - 管理</a></li>
           </ul>
        </li>
+
+	    <li class="treeview">
+
        <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>广告模组</span>
             <span class="pull-right-container">
@@ -347,8 +351,12 @@ desired effect
                       
                           <ul class="treeview-menu">
 
+
                            <li><a href="/admin/aadvert/create"> - 新增</a></li>
                           <li><a href="/admin/aadvert"> - 管理</a></li>
+
+                         
+
                           </ul>
                    </li>
                </ul>
@@ -358,6 +366,7 @@ desired effect
        </li>
 
 	   <li class="treeview">
+
           <a href="#"><i class="fa fa-link"></i> <span>订单模组</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -366,7 +375,18 @@ desired effect
           <ul class="treeview-menu">
             <li><a href="/admin/orders"> - 管理</a></li>
           </ul>
-       </li>
+      </li>
+      <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>合作伙伴</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/admin/link/create"> - 添加</a></li>
+            <li><a href="/admin/link"> - 管理</a></li>
+          </ul>
+      </li>
 	   <li>
 		<a href="#">
 			<i class="fa fa-link"></i>

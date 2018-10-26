@@ -12,27 +12,29 @@ class ShopCartController extends Controller
     //
     public function index()
     {
-        //
-        // echo 111111111;
-        $res = Cart::orderBy('id','desc')->where('uid',1)->get();
+        
+        $count = Cart::where('uid',session('uid'))->count();
+
+        $res = Cart::orderBy('id','desc')->where('uid',session('uid'))->get();
         foreach ($res as $k => $v) {
             $v->sum = ($v->price*$v->quantity);
         }
         
-        return view('Home.Cart.index',['title'=>'易商购物车','res'=>$res]);
+        return view('Home.Cart.index',['title'=>'易商购物车','res'=>$res,'count'=>$count]);
     }
+
 
     public function create(Request $request)
     {
-        // const REQ = $request->id;
         $goods = DB::table('es_products')->where('prod_id',$request->id)->get();
         $pic = DB::table('prod_pic')->where('cid',$request->id)->get();
-        $cart = Cart::where('uid',1)->where('pid',$request->id)->get();
+        $cart = Cart::where('uid',session('uid'))->where('pid',$request->id)->get();
+
 
         if($cart == "[]"){
         
             $res = Cart::insert([
-                "uid"=>1,
+                "uid"=>session('uid'),
                 "pid"=>$goods[0]->prod_id,
                 "pic"=>$pic[0]->pic,
                 "prod_name"=>$goods[0]->prod_name,
@@ -55,6 +57,7 @@ class ShopCartController extends Controller
     public function update(Request $request)
     {
         //
+       $product = DB::table('es_products')->where('prod_id',$request->id)->value('availability');
         $res = $request;
         $shu = Cart::where('id',$request->id)->first();
         // return $shu;
@@ -68,10 +71,19 @@ class ShopCartController extends Controller
         	return $shu;
 
         }
+
+        if($res->quantity > $product){
+
+             $sl = Cart::where('id',$res->id)->update(['quantity'=>$product]);
+            
+            return response()->json(['count'=>$product,'code'=>2]);
+             
+        }
+
     	$sl = Cart::where('id',$res->id)->update(['quantity'=>$res->quantity]);
     	if($sl){
     		$up = Cart::where('id',$res->id)->first();
-    			// $up->sum = round($up->price*$up->quantity,3);
+    			
 	        return $up;
     	}
         	
@@ -83,11 +95,11 @@ class ShopCartController extends Controller
     {
     	// echo $request->id;
 
-    	
     	$res = Cart::where('id',$request->id)->delete();
+        $count = Cart::where('uid',session('uid'))->count();
 
     	if($res){
-    		return 1;
+    		return response()->json(['count'=>$count,'code'=>1]);
     	}else{
     		return 2;
     	}

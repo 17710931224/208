@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Model\Admin\Link;
 
 class FirstController extends Controller
 {
@@ -31,7 +32,7 @@ class FirstController extends Controller
     	$times = DB::table('es_products')->where('created_at','=','2018-10-15')->inRandomOrder()->take(4)->orderBy('price', 'asc')->get();
   
 
-
+        $site = Link::get();
     	
 
     	
@@ -44,6 +45,8 @@ class FirstController extends Controller
     		'sole'=>$sole,
     		'dress'=>$dress,
     		'books'=>$books,
-    		'computer'=>$computer]);
+    		'computer'=>$computer,
+            'site' => $site
+        ]);
     }
 }

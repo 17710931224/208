@@ -18,16 +18,16 @@ class aadvertController extends Controller
         $data = DB::table('aadvert')->orderBy('aid','asc')
             ->where(function($query) use($request){
                 //检测关键字
-                $gname = $request->input('adname');
+                $gname = $request->input('aname');
                 
                 
                 if(!empty($gname)) {
-                    $query->where('adname','like','%'.$gname.'%');
+                    $query->where('aname','like','%'.$gname.'%');
                 }
                 
                 
             })
-            ->paginate($request->input('num', 3));
+            ->paginate($request->input('num', 10));
         return view ('admin.aadvert.index',['title'=>'广告','data'=>$data,'request'=>$request]);
     }
 

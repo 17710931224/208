@@ -14,13 +14,15 @@ class ReviewsController extends Controller
     {
     	
         try{
-        	$res = Reviews::create(['user_id'=>1,'prod_id'=>$request->prod_id,'content'=>$request->content,'star'=>$request->star,'create_at'=>time()]);
+        	$res = Reviews::create(['user_id'=>session('uid'),'prod_id'=>$request->prod_id,'content'=>$request->content,'star'=>$request->star,'create_at'=>time()]);
         }catch(\Excepition $e){
             return back();
         }
 
     	$id = $res->id;
     	$reviews = $res->find($id);
+
+
     	// dd($reviews);
         if($request->hasFile('pic')){
 
@@ -50,6 +52,8 @@ class ReviewsController extends Controller
                 return back();
             }
 
+        }else{
+           return redirect("home/product/$request->prod_id");  
         }
     }
 
@@ -90,15 +94,16 @@ class ReviewsController extends Controller
             $step++;
             $stepon = Reviews::where('id',$request->id)->update(['stepon'=>$step]);
             if($stepon){
-                $yidian = DB::table('es_comment')->where('rid',$request->id)->where('like_id',2)->get();
+                // $yidian = DB::table('es_comment')->where('rid',$request->id)->where('like_id',2)->get();
                 // echo $yidian[0]->id;
-                if($yidian){
-                    DB::table('es_comment')->where('id',$yidian[0]->id)->update(['report_id'=>2]);
-                    return 1;
-                }else{
+                
+                    // DB::table('es_comment')->where('id',$yidian[0]->id)->update(['report_id'=>2]);
+                    // return 1;
+               
                     $on = DB::table('es_comment')->insert(['rid'=>$request->id,'report_id'=>2]);
-                    return 1;
-                }
+                    if($on){
+                        return 1;
+                    }
             }
         }else{
             return 2;
