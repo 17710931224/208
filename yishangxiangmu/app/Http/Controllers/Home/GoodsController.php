@@ -93,9 +93,9 @@ class GoodsController extends Controller
         $goods = Goods::inRandomOrder()->take(8)->get();
 
         //评论查询
-        $reviews = Reviews::orderBy('id','desc')->where('prod_id',$id)->paginate(3);
+        $reviews = Reviews::orderBy('id','desc')->where('prod_id',$id)->where('status',1)->paginate(3);
         
-        $count = Reviews::where('prod_id',$id)->count();
+        $count = Reviews::where('prod_id',$id)->where('status',1)->count();
         // dd($tiaoshu);
         foreach ($reviews as $k => $v) {
              $v['pic'] = $v->goodspic()->get();

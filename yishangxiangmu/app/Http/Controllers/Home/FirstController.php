@@ -9,10 +9,10 @@ use App\Model\Admin\Link;
 
 class FirstController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {   
 
-        
+        // $request->session()->regenerate();
 
         $goods = DB::table('es_products')->inRandomOrder()->take(4)->get();   
 

@@ -10,8 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+<<<<<<< HEAD
 
 
+=======
+// Session::reflash();
+session(['uid'=>1]);
+>>>>>>> 7ad25a7827f3b492e35279d70bb581f507309c93
 
 //首页
     Route::any('/', 'Home\FirstController@index');
@@ -91,3 +96,8 @@ Route::any('/home/reviews/like','Home\ReviewsController@like');
 Route::any('/home/reviews/stepon','Home\ReviewsController@stepon');
 //评论回复
 Route::any('/home/reply','Home\ReviewsController@reply');
+
+//收藏
+Route::any('/home/wishlists/create','Home\WishlistsController@create');
+Route::any('/home/wishlists/index','Home\WishlistsController@index');
+Route::any('/home/wishlists/delete','Home\WishlistsController@delete');

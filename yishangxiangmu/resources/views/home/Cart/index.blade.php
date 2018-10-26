@@ -16,7 +16,7 @@
 		}
 
 		.cart-empty .message .txt {
-		    font-size: 14px;
+		    font-size: 12px;
 		}
 		.cart-empty .message li {
 		    line-height: 38px;
@@ -35,7 +35,7 @@
 		    text-decoration: none;
 		    margin:0px;
 		    padding:0px;
-		    font-size:14px;
+		    font-size:12px;
 		}
 		
 	</style>
@@ -143,6 +143,7 @@
 		@endif	
 		</div>
 	</div>
+	
 	<!-- //Main Container -->
 @stop
 
@@ -199,9 +200,16 @@
 		$(this).click(function(){
 			var cquantity =up.parent('span').siblings('input[name=quantity]').val()
 			var cid = up.parents('span').siblings('input[name=cart_id]').val()
+			var sum = $(this).parents('tr').find('.sum').text().replace(/¥/g,"").trim()
+			var summ = $('.summ').text().replace(/¥/g,"").trim()
+			var summm = summ-sum
 			$.get('/home/cart/update',{id:cid,quantity:cquantity},function(data){
-				if(data == '1'){
+				if(data.code == '1'){
 					up.parents('tr').remove();
+					$('.summ').text('¥ '+summm.toFixed(2));
+					if(data.ucount < 1){
+							window.location.reload()
+						}
 				}else if(data.code == '2'){
 						up.parents('tr').find('input[name=quantity]').val(data.count);
 						var quantity = up.parents('tr').find('input[name=quantity]').val();
@@ -213,6 +221,7 @@
 
 							$('.summ').text('¥ '+ss.toFixed(2));
 						})
+						console.log(data)
 				}else{
 					// console.log(parseFloat(data.price*data.quantity,2));
 					// up.parents('td').siblings().find('.sum').text('¥ '+data.sum)

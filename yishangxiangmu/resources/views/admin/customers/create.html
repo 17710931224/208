@@ -1,0 +1,528 @@
+@extends ('admin.layouts.master')
+
+@section ('main')
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <i class="fa fa-pencil"></i>
+      客户基本资料 - 详情
+    </h3>
+  </div>
+  <div class="panel-body">
+    <form action="https://cart.mylocaldomain.com/admin/index.php?route=customer/customer/add&amp;user_token=ixPyVGOXeMRNyHi4r78AGjAw5CnWTjRr" class="form-horizontal" enctype="multipart/form-data" id="form-customer" method="post">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#tab-general">通用</a></li>
+        <li><a data-toggle="tab" href="#tab-affiliate">会员</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab-general">
+          <div class="row">
+            <div class="col-sm-2">
+              <ul class="nav nav-pills nav-stacked" id="address">
+                <li class=""><a aria-expanded="false" data-toggle="tab" href="#tab-customer">通用</a></li>
+                <li class="active">
+                  <a aria-expanded="true" data-toggle="tab" href="#tab-address1">
+                    <i class="fa fa-minus-circle" onclick="$(&apos;#address a:first&apos;).tab(&apos;show&apos;); $(&apos;a[href=\&apos;#tab-address1\&apos;]&apos;).parent().remove(); $(&apos;#tab-address1&apos;).remove();"></i>
+                    地址 1
+                  </a>
+                </li>
+                <li id="address-add">
+                  <a onclick="addAddress();">
+                    <i class="fa fa-plus-circle"></i>
+                    新增地址
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-sm-10">
+              <div class="tab-content">
+                <div class="tab-pane" id="tab-customer">
+                  <fieldset>
+                    <legend>客户资料</legend>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-customer-group">客户组</label>
+                      <div class="col-sm-10"><select class="form-control" id="input-customer-group" name="customer_group_id"><option selected="selected" value="1">默认</option></select></div>
+                    </div>
+                    <div class="form-group required">
+                      <label class="col-sm-2 control-label" for="input-firstname">名字</label>
+                      <div class="col-sm-10"><input class="form-control" id="input-firstname" name="firstname" placeholder="名字" type="text" value=""/></div>
+                    </div>
+                    <div class="form-group required">
+                      <label class="col-sm-2 control-label" for="input-lastname">姓氏</label>
+                      <div class="col-sm-10"><input class="form-control" id="input-lastname" name="lastname" placeholder="姓氏" type="text" value=""/></div>
+                    </div>
+                    <div class="form-group required">
+                      <label class="col-sm-2 control-label" for="input-email">电子邮件</label>
+                      <div class="col-sm-10"><input class="form-control" id="input-email" name="email" placeholder="电子邮件" type="text" value=""/></div>
+                    </div>
+                    <div class="form-group required">
+                      <label class="col-sm-2 control-label" for="input-mobile">手机号</label>
+                      <div class="col-sm-10"><input class="form-control" id="input-mobile" name="mobile" placeholder="手机号" type="text" value=""/></div>
+                    </div>
+                  </fieldset>
+                  <fieldset>
+                    <legend>密码</legend>
+                     <div class="form-group required">
+                      <label class="col-sm-2 control-label" for="input-password">密码</label>
+                      <div class="col-sm-10"><input autocomplete="off" class="form-control" id="input-password" name="password" placeholder="输入密码" type="password" value=""/></div>
+                    </div>
+                    <div class="form-group required">
+                      <label class="col-sm-2 control-label" for="input-confirm">确认密码</label>
+                      <div class="col-sm-10"><input autocomplete="off" class="form-control" id="input-confirm" name="confirm" placeholder="再次输入密码" type="password" value=""/></div>
+                    </div>
+                  </fieldset>
+                  <fieldset>
+                    <legend>通讯</legend>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-newsletter">订阅</label>
+                      <div class="col-sm-10">
+                        <select class="form-control" id="input-newsletter" name="newsletter">
+                          <option value="1">启用</option>
+                          <option selected="selected" value="0">禁用</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-status">状态</label>
+                      <div class="col-sm-10">
+                        <select class="form-control" id="input-status" name="status">
+                          <option selected="selected" value="1">启用</option>
+                          <option value="0">禁用</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-safe">安全</label>
+                      <div class="col-sm-10">
+                        <select class="form-control" id="input-safe" name="safe">
+                          <option value="1">是</option>
+                          <option selected="selected" value="0">否</option>
+                        </select>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="tab-pane active" id="tab-address1">
+                  <input name="address[1][address_id]" type="hidden" value=""/>
+                  <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-firstname1">名字</label>
+                    <div class="col-sm-10"><input class="form-control" id="input-firstname1" name="address[1][firstname]" placeholder="名字" type="text" value=""/></div>
+                  </div>
+                  <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-lastname1">姓氏</label>
+                    <div class="col-sm-10"><input class="form-control" id="input-lastname1" name="address[1][lastname]" placeholder="姓氏" type="text" value=""/></div>
+                  </div>
+                  <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-address">详细地址</label>
+                    <div class="col-sm-10"><textarea class="form-control" id="input-address" name="address[1][address]" placeholder="你的地理位置 ..."></textarea></div>
+                  </div>
+                  <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-city1">市（县）</label>
+                    <div class="col-sm-10"><input class="form-control" id="input-city1" name="address[1][city]" placeholder="市（县）" type="text" value=""/></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-postcode1">邮政编码</label>
+                    <div class="col-sm-10"><input class="form-control" id="input-postcode1" name="address[1][postcode]" placeholder="邮政编码" type="text" value=""/></div>
+                  </div>
+                  <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-country1">国家及受管轄地区（域）</label>
+                    <div class="col-sm-10">
+                      <select class="form-control" id="input-country1" name="address[1][country_id]" onchange="country(this, &apos;1&apos;, &apos;0&apos;);">
+                        <option value="">--- Please Select ---</option>
+                        <option value="244">Aaland Islands</option>
+                        <option value="1">Afghanistan</option>
+                        <option value="2">Albania</option>
+                        <option value="3">Algeria</option>
+                        <option value="4">American Samoa</option>
+                        <option value="5">Andorra</option>
+                        <option value="6">Angola</option>
+                        <option value="7">Anguilla</option>
+                        <option value="8">Antarctica</option>
+                        <option value="9">Antigua and Barbuda</option>
+                        <option value="10">Argentina</option>
+                        <option value="11">Armenia</option>
+                        <option value="12">Aruba</option>
+                        <option value="252">Ascension Island (British)</option>
+                        <option value="13">Australia</option>
+                        <option value="14">Austria</option>
+                        <option value="15">Azerbaijan</option>
+                        <option value="16">Bahamas</option>
+                        <option value="17">Bahrain</option>
+                        <option value="18">Bangladesh</option>
+                        <option value="19">Barbados</option>
+                        <option value="20">Belarus</option>
+                        <option value="21">Belgium</option>
+                        <option value="22">Belize</option>
+                        <option value="23">Benin</option>
+                        <option value="24">Bermuda</option>
+                        <option value="25">Bhutan</option>
+                        <option value="26">Bolivia</option>
+                        <option value="245">Bonaire, Sint Eustatius and Saba</option>
+                        <option value="27">Bosnia and Herzegovina</option>
+                        <option value="28">Botswana</option>
+                        <option value="29">Bouvet Island</option>
+                        <option value="30">Brazil</option>
+                        <option value="31">British Indian Ocean Territory</option>
+                        <option value="32">Brunei Darussalam</option>
+                        <option value="33">Bulgaria</option>
+                        <option value="34">Burkina Faso</option>
+                        <option value="35">Burundi</option>
+                        <option value="36">Cambodia</option>
+                        <option value="37">Cameroon</option>
+                        <option value="38">Canada</option>
+                        <option value="251">Canary Islands</option>
+                        <option value="39">Cape Verde</option>
+                        <option value="40">Cayman Islands</option>
+                        <option value="41">Central African Republic</option>
+                        <option value="42">Chad</option>
+                        <option value="43">Chile</option>
+                        <option value="44">China</option>
+                        <option value="45">Christmas Island</option>
+                        <option value="46">Cocos (Keeling) Islands</option>
+                        <option value="47">Colombia</option>
+                        <option value="48">Comoros</option>
+                        <option value="49">Congo</option>
+                        <option value="50">Cook Islands</option>
+                        <option value="51">Costa Rica</option>
+                        <option value="52">Cote D'Ivoire</option>
+                        <option value="53">Croatia</option>
+                        <option value="54">Cuba</option>
+                        <option value="246">Curacao</option>
+                        <option value="55">Cyprus</option>
+                        <option value="56">Czech Republic</option>
+                        <option value="237">Democratic Republic of Congo</option>
+                        <option value="57">Denmark</option>
+                        <option value="58">Djibouti</option>
+                        <option value="59">Dominica</option>
+                        <option value="60">Dominican Republic</option>
+                        <option value="61">East Timor</option>
+                        <option value="62">Ecuador</option>
+                        <option value="63">Egypt</option>
+                        <option value="64">El Salvador</option>
+                        <option value="65">Equatorial Guinea</option>
+                        <option value="66">Eritrea</option>
+                        <option value="67">Estonia</option>
+                        <option value="68">Ethiopia</option>
+                        <option value="69">Falkland Islands (Malvinas)</option>
+                        <option value="70">Faroe Islands</option>
+                        <option value="71">Fiji</option>
+                        <option value="72">Finland</option>
+                        <option value="74">France, Metropolitan</option>
+                        <option value="75">French Guiana</option>
+                        <option value="76">French Polynesia</option>
+                        <option value="77">French Southern Territories</option>
+                        <option value="126">FYROM</option>
+                        <option value="78">Gabon</option>
+                        <option value="79">Gambia</option>
+                        <option value="80">Georgia</option>
+                        <option value="81">Germany</option>
+                        <option value="82">Ghana</option>
+                        <option value="83">Gibraltar</option>
+                        <option value="84">Greece</option>
+                        <option value="85">Greenland</option>
+                        <option value="86">Grenada</option>
+                        <option value="87">Guadeloupe</option>
+                        <option value="88">Guam</option>
+                        <option value="89">Guatemala</option>
+                        <option value="256">Guernsey</option>
+                        <option value="90">Guinea</option>
+                        <option value="91">Guinea-Bissau</option>
+                        <option value="92">Guyana</option>
+                        <option value="93">Haiti</option>
+                        <option value="94">Heard and Mc Donald Islands</option>
+                        <option value="95">Honduras</option>
+                        <option value="96">Hong Kong</option>
+                        <option value="97">Hungary</option>
+                        <option value="98">Iceland</option>
+                        <option value="99">India</option>
+                        <option value="100">Indonesia</option>
+                        <option value="101">Iran (Islamic Republic of)</option>
+                        <option value="102">Iraq</option>
+                        <option value="103">Ireland</option>
+                        <option value="254">Isle of Man</option>
+                        <option value="104">Israel</option>
+                        <option value="105">Italy</option>
+                        <option value="106">Jamaica</option>
+                        <option value="107">Japan</option>
+                        <option value="257">Jersey</option>
+                        <option value="108">Jordan</option>
+                        <option value="109">Kazakhstan</option>
+                        <option value="110">Kenya</option>
+                        <option value="111">Kiribati</option>
+                        <option value="253">Kosovo, Republic of</option>
+                        <option value="114">Kuwait</option>
+                        <option value="115">Kyrgyzstan</option>
+                        <option value="116">Lao People's Democratic Republic</option>
+                        <option value="117">Latvia</option>
+                        <option value="118">Lebanon</option>
+                        <option value="119">Lesotho</option>
+                        <option value="120">Liberia</option>
+                        <option value="121">Libyan Arab Jamahiriya</option>
+                        <option value="122">Liechtenstein</option>
+                        <option value="123">Lithuania</option>
+                        <option value="124">Luxembourg</option>
+                        <option value="125">Macau</option>
+                        <option value="127">Madagascar</option>
+                        <option value="128">Malawi</option>
+                        <option value="129">Malaysia</option>
+                        <option value="130">Maldives</option>
+                        <option value="131">Mali</option>
+                        <option value="132">Malta</option>
+                        <option value="133">Marshall Islands</option>
+                        <option value="134">Martinique</option>
+                        <option value="135">Mauritania</option>
+                        <option value="136">Mauritius</option>
+                        <option value="137">Mayotte</option>
+                        <option value="138">Mexico</option>
+                        <option value="139">Micronesia, Federated States of</option>
+                        <option value="140">Moldova, Republic of</option>
+                        <option value="141">Monaco</option>
+                        <option value="142">Mongolia</option>
+                        <option value="242">Montenegro</option>
+                        <option value="143">Montserrat</option>
+                        <option value="144">Morocco</option>
+                        <option value="145">Mozambique</option>
+                        <option value="146">Myanmar</option>
+                        <option value="147">Namibia</option>
+                        <option value="148">Nauru</option>
+                        <option value="149">Nepal</option>
+                        <option value="150">Netherlands</option>
+                        <option value="151">Netherlands Antilles</option>
+                        <option value="152">New Caledonia</option>
+                        <option value="153">New Zealand</option>
+                        <option value="154">Nicaragua</option>
+                        <option value="155">Niger</option>
+                        <option value="156">Nigeria</option>
+                        <option value="157">Niue</option>
+                        <option value="158">Norfolk Island</option>
+                        <option value="112">North Korea</option>
+                        <option value="159">Northern Mariana Islands</option>
+                        <option value="160">Norway</option>
+                        <option value="161">Oman</option>
+                        <option value="162">Pakistan</option>
+                        <option value="163">Palau</option>
+                        <option value="247">Palestinian Territory, Occupied</option>
+                        <option value="164">Panama</option>
+                        <option value="165">Papua New Guinea</option>
+                        <option value="166">Paraguay</option>
+                        <option value="167">Peru</option>
+                        <option value="168">Philippines</option>
+                        <option value="169">Pitcairn</option>
+                        <option value="170">Poland</option>
+                        <option value="171">Portugal</option>
+                        <option value="172">Puerto Rico</option>
+                        <option value="173">Qatar</option>
+                        <option value="174">Reunion</option>
+                        <option value="175">Romania</option>
+                        <option value="176">Russian Federation</option>
+                        <option value="177">Rwanda</option>
+                        <option value="178">Saint Kitts and Nevis</option>
+                        <option value="179">Saint Lucia</option>
+                        <option value="180">Saint Vincent and the Grenadines</option>
+                        <option value="181">Samoa</option>
+                        <option value="182">San Marino</option>
+                        <option value="183">Sao Tome and Principe</option>
+                        <option value="184">Saudi Arabia</option>
+                        <option value="185">Senegal</option>
+                        <option value="243">Serbia</option>
+                        <option value="186">Seychelles</option>
+                        <option value="187">Sierra Leone</option>
+                        <option value="188">Singapore</option>
+                        <option value="189">Slovak Republic</option>
+                        <option value="190">Slovenia</option>
+                        <option value="191">Solomon Islands</option>
+                        <option value="192">Somalia</option>
+                        <option value="193">South Africa</option>
+                        <option value="194">South Georgia &amp; South Sandwich Islands</option>
+                        <option value="113">South Korea</option>
+                        <option value="248">South Sudan</option>
+                        <option value="195">Spain</option>
+                        <option value="196">Sri Lanka</option>
+                        <option value="249">St. Barthelemy</option>
+                        <option value="197">St. Helena</option>
+                        <option value="250">St. Martin (French part)</option>
+                        <option value="198">St. Pierre and Miquelon</option>
+                        <option value="199">Sudan</option>
+                        <option value="200">Suriname</option>
+                        <option value="201">Svalbard and Jan Mayen Islands</option>
+                        <option value="202">Swaziland</option>
+                        <option value="203">Sweden</option>
+                        <option value="204">Switzerland</option>
+                        <option value="205">Syrian Arab Republic</option>
+                        <option value="206">Taiwan</option>
+                        <option value="207">Tajikistan</option>
+                        <option value="208">Tanzania, United Republic of</option>
+                        <option value="209">Thailand</option>
+                        <option value="210">Togo</option>
+                        <option value="211">Tokelau</option>
+                        <option value="212">Tonga</option>
+                        <option value="213">Trinidad and Tobago</option>
+                        <option value="255">Tristan da Cunha</option>
+                        <option value="214">Tunisia</option>
+                        <option value="215">Turkey</option>
+                        <option value="216">Turkmenistan</option>
+                        <option value="217">Turks and Caicos Islands</option>
+                        <option value="218">Tuvalu</option>
+                        <option value="219">Uganda</option>
+                        <option value="220">Ukraine</option>
+                        <option value="221">United Arab Emirates</option>
+                        <option value="222">United Kingdom</option>
+                        <option value="223">United States</option>
+                        <option value="224">United States Minor Outlying Islands</option>
+                        <option value="225">Uruguay</option>
+                        <option value="226">Uzbekistan</option>
+                        <option value="227">Vanuatu</option>
+                        <option value="228">Vatican City State (Holy See)</option>
+                        <option value="229">Venezuela</option>
+                        <option value="230">Viet Nam</option>
+                        <option value="231">Virgin Islands (British)</option>
+                        <option value="232">Virgin Islands (U.S.)</option>
+                        <option value="233">Wallis and Futuna Islands</option>
+                        <option value="234">Western Sahara</option>
+                        <option value="235">Yemen</option>
+                        <option value="238">Zambia</option>
+                        <option value="239">Zimbabwe</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-zone1">省份/自治（州）/直辖（市）</label>
+                    <div class="col-sm-10">
+                      <select class="form-control" id="input-zone1" name="address[1][zone_id]">
+                        <option value="">--- Please Select ---</option>
+                        <option value="0">--- None ---</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">默认地址</label>
+                    <div class="col-sm-10"><label class="radio"><input name="address[1][default]" type="radio" value="1"/></label></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="tab-affiliate">
+          <fieldset>
+            <legend>会员详情</legend>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-company">公司</label>
+              <div class="col-sm-10"><input class="form-control" id="input-company" name="company" placeholder="公司" type="text" value=""/></div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-website">网站</label>
+              <div class="col-sm-10"><input class="form-control" id="input-website" name="website" placeholder="网站" type="text" value=""/></div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-tracking"><span data-original-title="The tracking code that will be used to track referrals." data-toggle="tooltip" title="">追踪号</span></label>
+              <div class="col-sm-10"><input class="form-control" id="input-tracking" name="tracking" placeholder="追踪号" type="text" value=""/></div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-commission"><span data-original-title="Percentage the affiliate receives on each order." data-toggle="tooltip" title="">佣金 (%)</span></label>
+              <div class="col-sm-10"><input class="form-control" id="input-commission" name="commission" placeholder="佣金 (%)" type="text" value="5"/></div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>付款詳情</legend>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-tax">税号</label>
+              <div class="col-sm-10"><input class="form-control" id="input-tax" name="tax" placeholder="税号" type="text" value=""/></div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">付款方式</label>
+              <div class="col-sm-10">
+                <div class="radio">
+                  <label>
+                    <input checked="checked" name="payment" type="radio" value="cheque"/>
+                    Cheque
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input name="payment" type="radio" value="paypal"/>
+                    PayPal
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input name="payment" type="radio" value="bank"/>
+                    Bank Transfer
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="payment" id="payment-cheque" style="display: block;">
+              <div class="form-group required">
+                <label class="col-sm-2 control-label" for="input-cheque">检查收款人姓名</label>
+                <div class="col-sm-10"><input class="form-control" id="input-cheque" name="cheque" placeholder="检查收款人姓名" type="text" value=""/></div>
+              </div>
+            </div>
+            <div class="payment" id="payment-paypal" style="display: none;">
+              <div class="form-group required">
+                <label class="col-sm-2 control-label" for="input-paypal">PayPal 电子邮件账户</label>
+                <div class="col-sm-10"><input class="form-control" id="input-paypal" name="paypal" placeholder="PayPal 电子邮件账户" type="text" value=""/></div>
+              </div>
+            </div>
+            <div class="payment" id="payment-bank" style="display: none;">
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-bank-name">银行名</label>
+                <div class="col-sm-10"><input class="form-control" id="input-bank-name" name="bank_name" placeholder="银行名" type="text" value=""/></div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-bank-branch-number">ABA/BSB number （支行号码）</label>
+                <div class="col-sm-10"><input class="form-control" id="input-bank-branch-number" name="bank_branch_number" placeholder="ABA/BSB number (Branch Number)" type="text" value=""/></div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-bank-swift-code">SWIFT Code</label>
+                <div class="col-sm-10"><input class="form-control" id="input-bank-swift-code" name="bank_swift_code" placeholder="SWIFT Code" type="text" value=""/></div>
+              </div>
+              <div class="form-group required">
+                <label class="col-sm-2 control-label" for="input-bank-account-name">银行账户名</label>
+                <div class="col-sm-10"><input class="form-control" id="input-bank-account-name" name="bank_account_name" placeholder="Account Name" type="text" value=""/></div>
+              </div>
+              <div class="form-group required">
+                <label class="col-sm-2 control-label" for="input-bank-account-number">银行账户卡号</label>
+                <div class="col-sm-10"><input class="form-control" id="input-bank-account-number" name="bank_account_number" placeholder="Account Number" type="text" value=""/></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-affiliate">状态</label>
+              <div class="col-sm-10">
+                <select class="form-control" id="input-affiliate" name="affiliate">
+                  <option value="1">启用</option>
+                  <option selected="selected" value="0">禁用</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="tab-pane" id="tab-ip">
+          <fieldset>
+            <legend>IP</legend>
+            <div id="ip">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td class="text-left">IP</td>
+                      <td class="text-right">Total Accounts</td>
+                      <td class="text-left">Date Added</td>
+                    </tr>
+                  </thead>
+                  <tbody><tr><td class="text-center" colspan="3">No results!</td></tr></tbody>
+                </table>
+              </div>
+              <div class="row">
+                <div class="col-sm-6 text-left"></div>
+                <div class="col-sm-6 text-right">Showing 0 to 0 of 0 (0 Pages)</div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+@endsection

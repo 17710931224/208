@@ -330,7 +330,7 @@
                         <ul class="wishlist-comp hidden-md hidden-sm hidden-xs">
                             
                             </li>
-                            <li class="wishlist hidden-xs"><a href="#" id="wishlist-total" class="top-link-wishlist" title="愿望清单（0） "><i class="fa fa-heart"></i></a>
+                            <li class="wishlist hidden-xs"><a href="/home/wishlists/index" id="wishlist-total" class="top-link-wishlist" title="愿望清单（0） "><i class="fa fa-heart"></i></a>
                             </li>
                         </ul>
 
@@ -950,8 +950,8 @@
                                     <div class="add-to-links wish_comp">
                                         <ul class="blank list-inline">
                                             <li class="wishlist">
-                                                <a class="icon" data-toggle="tooltip" title=""
-                                                onclick="wishlist.add('50');" data-original-title="Add to Wish List"><i class="fa fa-heart"></i>
+                                                <a class="icon addWishlist" data-toggle="tooltip" title=""
+                                                 data-original-title="加入愿望清单"><i class="fa fa-heart"></i>
                                                 </a>
                                             </li>
                                             
@@ -1242,7 +1242,9 @@
                                             <button type="button" class="addToCart" title="加入购物车">
                                                 <span>加入购物车 </span>   
                                             </button>
-                                            <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart-o"></i><span>收藏</span>
+                                            <button type="button" class="wishlist btn-button createWishlists" title="加入愿望清单" 
+
+                                            ><i class="fa fa-heart-o"></i><span>收藏</span>
                                             </button>
                                          
                                             
@@ -1551,12 +1553,32 @@
     <!-- <script type="text/javascript" src="/homes/js/jquery.min.js"></script> -->
     <script type="text/javascript" src="/homes/js/jquery.rating-stars.min.js"></script>
 
-    <!-- <script type="text/javascript" src="/page/js/jquery.min.js"></script> -->
-    <!-- <script type="text/javascript" src="/page/js/paging.js"></script> -->
     
 </body>
 @section('js')
     <script type="text/javascript">
+        //加入收藏
+        $('.addWishlist').click(function(){
+            var pid = $(this).parents('.wish_comp').siblings('.cart').find('.pid').val();
+            // console.log(pid);
+            $.get('/home/wishlists/create',{pid:pid},function(data){
+                // console.log(data)
+                if(data == "1"){
+                    alert('已加入愿望清单');
+                }
+            });
+        })
+
+        $('.createWishlists').click(function(){
+            var  pid = $(this).siblings('input[name=pid]').val()
+            // console.log(pid)
+            $.get('/home/wishlists/create',{pid:pid},function(data){
+                if(data == "1"){
+                    alert('已加入愿望清单');
+                }
+            })
+        })
+
         //加入购物车
         $('#aaa').click(function(){
             var pid = $('.pid').val()
@@ -1565,7 +1587,9 @@
             $.get('/home/cart/create',{id:pid,quantity:quantity},function(data){
                 if(data == '1'){
                     alert('已加入购物车');
+                    
                 }
+                // console.log(data)
             })
 
         })
@@ -1576,7 +1600,9 @@
             $.get('/home/cart/create',{id:pid,quantity:1},function(data){
                 if(data == '1'){
                    alert('已加入购物车'); 
+                   
                 }
+                // console.log(data)
             })
         })
 
@@ -1598,7 +1624,7 @@
         $('.pl').submit(function(){
             var YZ
             var ss = $('#pinglun').val()
-             var reg = /^([\u4e00-\u9fa5]|[0-9]|[,]|[，]|[。]|[.]|["]|[“]|[”]|[']|[‘]|[’]|[;]|[；]|[：]|[;]|[?]|[？]|[:]|[、]|[!]|[！]|[/]|[`]|[·]|[~]|[~]|[（]|[）]|[()]|[)]|[=]|[+]|[-]|[_]|[*]|[——]|[ ]){0,200}$/
+             var reg = /^([\u4e00-\u9fa5]|[0-9]|[,]|[，]|[。]|[.]|["]|[“]|[”]|[']|[‘]|[’]|[;]|[；]|[：]|[;]|[?]|[？]|[:]|[、]|[!]|[！]|[/]|[`]|[·]|[~]|[~]|[（]|[）]|[(]|[)]|[=]|[+]|[-]|[_]|[*]|[——]|[ ]|[a-zA-Z]){0,200}$/
             // console.log(ss)
             if(!reg.test(ss)){
                 YZ = false;

@@ -105,7 +105,7 @@
 										@endforeach
 									</div>
 								</div>
-								<div class="col-sm-6  checkout-payment-methods">
+								<div class="col-sm-6  checkout-payment-methods" style="display: none">
 									<div class="panel-heading">
 									  <h4 class="panel-title"><i class="fa fa-credit-card"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 付款方法</font></font></h4>
 									</div>
@@ -224,6 +224,9 @@
 	<!-- <script class="resources library" src="/Home/js/area.js" type="text/javascript"></script>
     <script type="text/javascript">_init_area();</script> -->
 	<script type="text/javascript">
+
+	
+
 		$('body').removeClass('common-home res layout-1')
 			
 		//商品价格

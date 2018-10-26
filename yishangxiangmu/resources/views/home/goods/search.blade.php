@@ -106,7 +106,7 @@
                                         <button type="button" class="addToCart" title="添加到购物车" >
                                             <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加到购物车 </font></font></span>   
                                         </button>
-                                        <button type="button" class="wishlist btn-button" title="加入愿望清单" onclick="wishlist.add('60');"><i class="fa fa-heart-o"></i><span>Add to Wish List</span>
+                                        <button type="button" class="wishlist btn-button" title="加入愿望清单" "><i class="fa fa-heart-o"></i><span>Add to Wish List</span>
                                         </button>
                                         
                                         
@@ -137,7 +137,7 @@
                                         <input type="text" name="pid" value="{{$v->prod_id}}" style="display: none">
                                         <button class="addToCart btn-button" type="button" title="加入购物车"><i class="fa fa-shopping-basket"></i>
                                         </button>
-                                        <button class="wishlist btn-button" type="button" title="Add to Wish List" onclick="wishlist.add('101');"><i class="fa fa-heart"></i>
+                                        <button class="wishlist btn-button" type="button" title="Add to Wish List"><i class="fa fa-heart"></i>
                                         </button>
                                        
                                         <!--quickview-->                                                      
@@ -181,12 +181,24 @@
 
 @section('js')
   <script type="text/javascript">
+
       $('.addToCart').click(function(){
         var pid = $(this).prev().val()
         // console.log(pid);
         $.get('/home/cart/create',{id:pid,quantity:1},function(data){
             if(data == "1"){
                 alert('已加入购物车')
+            }
+        })
+
+      })
+
+      $('.wishlist').click(function(){
+        var pid = $(this).siblings('input[name=pid]').val()
+        // console.log(pid);
+        $.get('/home/wishlists/create',{pid:pid},function(data){
+            if(data == "1"){
+                alert('已加入愿望清单')
             }
         })
       })
